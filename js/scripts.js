@@ -12,7 +12,7 @@
 
     var tabButtons = $('.tab-nav-btn');
     var tabContents = $('.tab-content');
-    var tabMap = { 'home': 'tab-home', 'resume': 'tab-resume', 'projects': 'tab-projects' };
+    var tabMap = { 'home': 'tab-home', 'resume': 'tab-resume', 'projects': 'tab-projects', 'about': 'tab-about' };
 
     function switchTab(tabId) {
         // Hide all tab contents, show target
