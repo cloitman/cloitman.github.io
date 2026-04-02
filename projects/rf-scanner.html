@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Counterfeit RF Scanner - Charlie Loitman</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="page-wrapper">
+        <aside id="sidebar">
+            <div class="sidebar-sticky">
+                <div class="sidebar-photo">
+                    <img src="../images/headshot.jpg" alt="Charlie Loitman">
+                </div>
+                <h1 class="sidebar-name"><a href="../index.html" style="color:#fff;text-decoration:none;">Charlie Loitman</a></h1>
+                <p class="sidebar-tagline">Engineer. Data Scientist.<br>Energy Systems.</p>
+                <div class="sidebar-info">
+                    <p><i class="fa fa-map-marker"></i> Berkeley, CA</p>
+                    <p><i class="fa fa-graduation-cap"></i> UC Berkeley MCS '26</p>
+                    <p><i class="fa fa-graduation-cap"></i> Yale BS '22</p>
+                </div>
+                <div class="sidebar-links">
+                    <a href="https://github.com/cloitman" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+                </div>
+                <a href="../content/cloitmanResume2026.pdf" download class="sidebar-resume-btn">Download Resume</a>
+                <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+                    <i class="fa fa-moon-o"></i>
+                    <i class="fa fa-sun-o"></i>
+                </button>
+            </div>
+        </aside>
+
+        <div class="project-detail-wrapper">
+            <nav class="project-detail-nav">
+                <a href="../index.html#projects" class="back-btn"><i class="fa fa-arrow-left"></i> Back to Projects</a>
+            </nav>
+
+            <div class="project-detail">
+                <!-- HEADER -->
+                <div class="project-detail-header">
+                    <h1>Counterfeit RF Scanner</h1>
+                    <p class="project-detail-subtitle">Modified 3D printer to analyze electronic parts for defects</p>
+                    <p class="project-detail-meta"><strong>Setting:</strong> August 2021 - April 2022; Computer Architecture and Security Lab, Yale University</p>
+                </div>
+
+                <!-- HERO IMAGE -->
+                <div class="project-detail-hero">
+                    <img src="../images/cubesat/cubesat.png" alt="Counterfeit RF Scanner">
+                </div>
+
+                <!-- BODY -->
+                <div class="project-detail-body">
+                    <h2>Summary</h2>
+                    <p>Counterfeit electronic parts cost the global economy hundreds of billions of dollars each year. Fortunately, they can be identified without damage through their unique electromagnetic radiation. For this project, I modified a 3D printer body to replace the extruder with a camera and magnetic field probe to create a scan of a test part and its radiation output. By comparing these values with an example part, a counterfeit can quickly be identified.</p>
+
+                    <h2>Problem</h2>
+                    <p>Counterfeits are a costly problem with cheap manufacturers producing materials of lower quality than originals. Current methods of identifying counterfeits either destroy test parts (potentially expensive) or are expensive and very slow. Non-invasive identification methods measure radiation (magnetic field, electric field, heat, etc.) from test parts in specially designed equipment. Due to this expense, counterfeit identification is underutilized.</p>
+
+                    <h2>Solution Requirements</h2>
+                    <ul>
+                        <li>Autonomous scanning - need three dimensions of movement</li>
+                        <li>Height detection capabilities - necessary to have radiation probe put in close proximity to the part without damaging either</li>
+                        <li>High resolution scans, but also cheap</li>
+                    </ul>
+
+                    <h2>Solution</h2>
+                    <p>To replace expensive robotic arms in traditional counterfeit scanners, I modified a 3D printer by replacing the extruder with a 3D printed head for both a distance sensor and Hall effect probe to measure magnetic field. These parts were controlled using a RaspberryPi that was controlled by an extensive and modular coding library that I wrote.</p>
+
+                    <p>With the mount, I modified a RaspberryPi to control the 3D printer mount and connected probes. The printer would run a snake path over the surface of the printer bed with a distance sensor to create a topographic map of the part.</p>
+
+                    <p>Using this data, the code would create a custom Gcode map that instructed the printer how close to bring the Hall effect probe the surface of the part for best radiation readings.</p>
+
+                    <h2>Result</h2>
+                    <p>The system in total cost $350, far less than the >$10k existing models, but the data is quite noisy. The topographic map needed refinement to move the Hall effect probe closer and when doing RF scanning, an insulating shield needs to be refined. In total, this was an effective proof-of-concept prepared for open-sourcing for labs around the country. The machine was designed with modularity to make easy substitutions with alternate probes and printers.</p>
+                </div>
+
+                <!-- SKILLS -->
+                <div class="project-detail-skills">
+                    <h2>Skills &amp; Technologies</h2>
+                    <ul>
+                        <li>Computer-Aided Design</li>
+                        <li>Circuitry</li>
+                        <li>Python</li>
+                        <li>GCode</li>
+                        <li>Electricity &amp; Magnetism</li>
+                        <li>Linux</li>
+                        <li>Parts Testing</li>
+                        <li>Cost-Benefit Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="project-detail-back-bottom">
+                    <a href="../index.html#projects" class="btn-rounded-theme"><i class="fa fa-arrow-left"></i> Back to Projects</a>
+                </div>
+            </div>
+
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 copyright">
+                            <p>Copyright &copy; <span id="copyright-year"></span> Charlie Loitman</p>
+                        </div>
+                        <div class="col-sm-2 top">
+                            <span id="to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-sm-5 social">
+                            <ul>
+                                <li><a href="https://github.com/cloitman/my_tools" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    // Dark mode
+    (function() {
+        var body = document.body;
+        try { if (localStorage.getItem('darkMode') === 'true') body.classList.add('dark-mode'); } catch(e) {}
+        document.getElementById('dark-toggle').addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            try { localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'true' : 'false'); } catch(e) {}
+        });
+        document.getElementById('to-top').addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    })();
+    </script>
+</body>
+</html>

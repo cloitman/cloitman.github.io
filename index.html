@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Daniel Arnold</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Charlie Loitman - Engineer, Data Scientist, Energy Systems</title>
+    <meta name="description" content="Portfolio of Charlie Loitman - mechanical engineer, data scientist, and energy systems researcher. Yale BS, UC Berkeley Master's of Climate Solutions.">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -18,323 +19,520 @@
     <div id="mobile-menu-open" class="shadow-large">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
-    <!-- End #mobile-menu-toggle -->
     <header>
         <div id="mobile-menu-close">
             <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <ul id="menu" class="shadow">
-            <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#experience">Experience</a>
-            </li>
-            <li>
-                <a href="#education">Education</a>
-            </li>
-            <li>
-                <a href="#projects">Projects</a>
-            </li>
-            <li>
-                <a href="#skills">Skills</a>
-            </li>
-            <li>
-                <a href="#contact">Contact</a>
-            </li>
+            <li><a href="#home" class="tab-link" data-tab="tab-home">Home</a></li>
+            <li><a href="#resume" class="tab-link" data-tab="tab-resume">Resume</a></li>
+            <li><a href="#projects" class="tab-link" data-tab="tab-projects">Projects</a></li>
         </ul>
     </header>
-    <!-- End header -->
 
-    <div id="lead">
-        <div id="lead-content">
-            <h1>Daniel Arnold</h1>
-            <h2>Research Scientist</h2>
-            <a href="content/DanielArnold_CV.pdf" download class="btn-rounded-white">Download Resume</a>
-        </div>
-        <!-- End #lead-content -->
-
-        <div id="lead-overlay"></div>
-
-        <div id="lead-down">
-            <span>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </span>
-        </div>
-        <!-- End #lead-down -->
-    </div>
-    <!-- End #lead -->
-
-    <div id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2 class="heading">About Me</h2>
+    <!-- Sidebar + Main Layout -->
+    <div id="page-wrapper">
+        <aside id="sidebar">
+            <div class="sidebar-sticky">
+                <div class="sidebar-photo">
+                    <img src="images/headshot.jpg" alt="Charlie Loitman">
                 </div>
-                <div class="col-md-8">
+                <h1 class="sidebar-name" id="sidebar-name">Charlie Loitman</h1>
+                <p class="sidebar-tagline">Engineer. Data Scientist.<br>Energy Systems.</p>
+                <div class="sidebar-info">
+                    <p><i class="fa fa-map-marker"></i> Berkeley, CA</p>
+                    <p><i class="fa fa-graduation-cap"></i> UC Berkeley MCS '26</p>
+                    <p><i class="fa fa-graduation-cap"></i> Yale BS '22</p>
+                </div>
+                <div class="sidebar-links">
+                    <a href="https://github.com/cloitman" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+                </div>
+                <a href="content/cloitmanResume2026.pdf" download class="sidebar-resume-btn">Download Resume</a>
+                <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+                    <i class="fa fa-moon-o"></i>
+                    <i class="fa fa-sun-o"></i>
+                </button>
+            </div>
+        </aside>
+
+        <div id="main-content">
+
+            <!-- Tab Navigation -->
+            <nav class="tab-nav">
+                <button class="tab-nav-btn active" data-tab="tab-home">Home</button>
+                <button class="tab-nav-btn" data-tab="tab-resume">Resume</button>
+                <button class="tab-nav-btn" data-tab="tab-projects">Projects</button>
+            </nav>
+
+            <!-- ===================== TAB 1: HOME ===================== -->
+            <div id="tab-home" class="tab-content active">
+
+                <!-- Hero Banner -->
+                <div class="hero-banner">
+                    <h2>Building the Quantitative Tools for the Energy Transition</h2>
+                    <p>Mechanical Engineer &middot; Data Scientist &middot; Power Systems Researcher</p>
+                </div>
+
+                <!-- About -->
+                <div class="about-section">
+                    <h3>About Me</h3>
                     <p>
-                    Welcome to my personal website.  I am a research scientist with a background in control systems, optimization, and machine learning, who is passionate about applied research.  In addition to studying and applying algorithms from these fields to solve practical real-world problems, I greatly enjoy teaching both fundamental and advanced concepts in these areas.  On this site, you'll find some details of my CV, as well as links to some independent projects.
-                    <br><br>
-                    Prior to earning my PhD at Cal, I developed nonlinear and adaptive control algorithms for unmanned underwater vehicles for the U.S. Navy.  During my PhD studies, I developed model-free optimal control techniques for managing renewable energy sources in electric grids.  Since joining Lawrence Berkeley National Lab, I've conducted research focusing on the use of optimal control/reinforcement learning techniques for electric grid cybersecurity.  Additionally, I have applied time series analysis and machine learning techniques to analyze electric power distribution system phasor data.
-                    <br><br>
-                    <a href="https://scholar.google.com/citations?user=uQb64EEAAAAJ&hl=en">Google Scholar</a>
+                        I'm a mechanical engineer and data scientist hoping to build the quantitative tools that power the energy transition. I hold a B.S. in Mechanical Engineering and a B.A. in Economics from Yale University, where I received the Lichty &amp; Waters Prize (the department's highest honor) and the Outstanding Undergraduate Achievement Award.
+                    </p>
+                    <p>
+                        I'm currently completing my Master's of Climate Solutions at UC Berkeley, where I focus on power systems, electrification, and data science. My work spans electric transmission system analysis, solar battery optimization against ERCOT market data, and methane detection from orphaned oil wells.
+                    </p>
+                    <p>
+                        Before graduate school, I spent two years as a commodities and energy trader at Flow Traders in New York, where I systematized trading workflows &mdash; increasing volume 4x and profits 40% for the commodities desk &mdash; before co-creating the Centralized Execution Desk where I conducted research to optimize trading across asset classes. My interdisciplinary background connects rigorous engineering fundamentals with real-world energy systems, ML/data science, and power systems.
                     </p>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- End #about -->
 
-    <div id="experience" class="background-alt">
-        <h2 class="heading">Experience</h2>
-        <div id="experience-timeline">
-            <div data-date="July 2017 – Present">
-                <h3>Lawrence Berkeley National Lab (LBNL)</h3>
-                <h4>Research Scientist</h4>
-                <p>
-                    I lead and co-lead several projects at the intersection of control systems/optimization/machine learning and the electric power system.  My work has been focused on:
-                </p>
-                <ul>
-                <li>
-                    Developing optimal control algorithms and software for stochastic optimization of electric power distribution systems
-                </li>
-                <li>
-                    Conducting research into black-box model-free optimization algorithms
-                </li>
-                <li>
-                    Designing adaptive control schemes for Distributed Energy Resource (DER) cybersecurity
-                </li>
-            </ul>
-            </div>
-
-            <div data-date="January 2018 - Present">
-                <h3>University of California Berkeley</h3>
-                <h4>Adjunct Professor, Civil and Environmental Engineering Department</h4>
-                <p>
-                     <a href="https://ecal.berkeley.edu/ce295.html">CEE 295 - Data Science for Energy</a>
-                </p>
-                <ul>
-                <li>
-                   Introduces data science fundamentals and programming techniques to graduate and upper division students
-                </li>
-                <li>
-                    Course content includes: dynamic systems modeling, state estimation, convex optimization, machine learning, and optimal control
-                </li>
-            </ul>
-                <p>
-                    <a href="https://ecal.berkeley.edu/ce191.html">CEE 191 - Systems Analysis (Introduction to Optimization)</a>
-                </p>
-                <ul>
-                <li>
-                   Introduces optimization fundamentals and programming techniques to graduate and upper division undergraduate students
-                </li>
-                <li>
-                    Course content includes: linear programming, quadratic programming, mixed integer programming, nonlinear programming, search algorithms, and dynamic programming
-                </li>
-            </ul>
-            </div>
-
-            <div data-date="January 2016 – July 2017">
-                <h3>Lawrence Berkeley National Lab (LBNL)</h3>
-                <h4>ITRI-Rosenfeld Postdoctoral Fellow</h4>
-                <p>
-                    I researched model-free optimal control strategies for managing solar photovoltaic systems.  Additionally, I applied semi-supervised learning techniques for inference of properties of electric distribution grids using Phasor Measurement Unit (PMU) data.
-                </p>
-            </div>
-            
-            <div data-date="September 2008 – August 2009">
-                <h3>Marine Renewable Energy Engineer</h3>
-                <h4>Naval Facilities Engineering Service Center (NAVFAC-ESC), U.S. Navy</h4>
-                <p>
-                    I researched ocean-based renewable energy technologies both under development or commercially available and prepared technology readiness level assessments for U.S. Navy shore facility commanders.
-                </p>
-            </div>
-            
-            <div data-date="December 2006 – September 2008">
-                <h3>Research and Development Engineer</h3>
-                <h4>Space and Naval Warfare Center (SPAWAR), U.S. Navy</h4>
-                <p>
-                    I developed and tested control algorithms for unmanned underwater vehicles for the U.S. Navy
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- End #experience -->
-
-    <div id="education">
-        <h2 class="heading">Education</h2>
-        <div class="education-block">
-            <h3>University of California Berkeley</h3>
-            <span class="education-date">September 2009- December 2015</span>
-            <h4>Doctor of Philosophy in Mechanical Engineering</h4>
-            <p>
-                I developed model-free optimal control algorithms to manage solar photovoltaic generation systems to optimize the behavior of electric power distribution systems.  My advisors were Dave Auslander (Mechanical Engineering) and Duncan Callaway (Energy and Resources Group)
-            </p>
-        </div>
-        <!-- End .education-block -->
-
-        <div class="education-block">
-            <h3>University of California San Diego</h3>
-            <span class="education-date">September 2005 - December 2006</span>
-            <h4>Master of Science in Mechanical Engineering</h4>
-            <p> I researched extremum seeking control approaches for peak seeking mobile robot applications.  My advisor was Miroslav Krstic.
-            </p>
-        </div>
-        <!-- End .education-block -->
-        
-        <div class="education-block">
-            <h3>University of California San Diego</h3>
-            <span class="education-date">September 2001 - September 2005</span>
-            <h4>Bachelor of Science in Mechanical Engineering</h4>
-            <p> Elective courses in signal processing, control systems, and robotics.  Graduated <i>cum laude</i>.
-            </p>
-        </div>
-        <!-- End .education-block -->
-    </div>
-    <!-- End #education -->
-
-    <div id="projects" class="background-alt">
-        <h2 class="heading">Projects</h2>
-        <div class="container">
-            <div class="row">
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
+                <!-- Skill Highlight Cards -->
+                <div class="skill-cards">
+                    <div class="skill-card">
+                        <h4><i class="fa fa-line-chart"></i> Modelling</h4>
+                        <ul>
+                            <li>Optimization &amp; simulation</li>
+                            <li>Power flow analysis, capacity expansion, &amp; unit commitment</li>
+                            <li>Pytorch and RL</li>
+                        </ul>
                     </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>from_scratch</h3>
-                        <p>
-                            A collection of small machine learning projects built completley from scratch.  I don't use any tools from advanced ML python packages (sklearn, scipy) except for comparison to the from_scratch results.
-                        </p>
-                        <a href="https://daniel-arnold.github.io/from_scratch/">View Project</a>
+                    <div class="skill-card">
+                        <h4><i class="fa fa-cogs"></i> Engineering</h4>
+                        <ul>
+                            <li>ME fundamentals (thermo, fluids, dynamics)</li>
+                            <li>Power systems</li>
+                            <li>Controls &amp; state estimation</li>
+                        </ul>
                     </div>
-                    <!-- End .project-info -->
+                    <div class="skill-card">
+                        <h4><i class="fa fa-wrench"></i> Design</h4>
+                        <ul>
+                            <li>Experimental design</li>
+                            <li>Research tools &amp; systematization</li>
+                            <li>Instrumentation</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h4><i class="fa fa-database"></i> ML / Data Science</h4>
+                        <ul>
+                            <li>Prediction, classification, regression</li>
+                            <li>Time-series analysis &amp; forecasting</li>
+                            <li>Geospatial analysis</li>
+                        </ul>
+                    </div>
                 </div>
-                <!-- End .project -->
 
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
+                <!-- Key Project Previews -->
+                <div class="project-previews">
+                    <h3>Key Projects</h3>
+                    <div class="preview-grid">
+                        <a class="project-preview" href="#projects" data-tab="tab-projects">
+                            <h5>Virtual Power Plant Model (academic projects)</h5>
+                            <p>Optimal power flow &amp; battery placement using Python + Julia</p>
+                            <span class="preview-tag">Featured &rarr;</span>
+                        </a>
+                        <a class="project-preview" href="#projects" data-tab="tab-projects">
+                            <h5>Solar Battery Optimization</h5>
+                            <p>Monetization modelling for residential storage at SunStrong Management</p>
+                            <span class="preview-tag">In Progress &rarr;</span>
+                        </a>
+                        <a class="project-preview" href="#projects" data-tab="tab-projects">
+                            <h5>Methane Detection</h5>
+                            <p>Predictive model for orphaned oil well emissions</p>
+                            <span class="preview-tag">In Progress &rarr;</span>
+                        </a>
+                        <a class="project-preview" href="#projects" data-tab="tab-projects">
+                            <h5>Flow Traders Product Design</h5>
+                            <p>Automated trading systems, 4x volume increase</p>
+                            <span class="preview-tag">Completed &rarr;</span>
+                        </a>
                     </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>time_series</h3>
-                        <p>
-                            A collection of time series analysis and forecasting techniques from control systems, signal processing, and machine learning.
-                        </p>
-                        <a href="https://daniel-arnold.github.io/time_series/">View Project</a>
-                    </div>
-                    <!-- End .project-info -->
                 </div>
-                <!-- End .project -->
-                
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>reinforcement_learning</h3>
-                        <p>
-                            A collection of reinforcement learning problems from OpenAI gym solved with Keras and TensorFlow.  
-                        </p>
-                        <a href="https://daniel-arnold.github.io/reinforcement_learning/">View Project</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-                
-                <div class="project shadow-large">
-                    <div class="project-image">
-                        <img src="images/project.jpg" />
-                    </div>
-                    <!-- End .project-image -->
-                    <div class="project-info">
-                        <h3>extremum_seeking</h3>
-                        <p>
-                            Extremum seeking is a nonlinear adaptive control algorithm that is incredibly useful for model-free optimization.  This project is a collection of extremum seeking control implementations on python notebooks.    
-                        </p>
-                        <a href="https://daniel-arnold.github.io/extremum_seeking/">View Project</a>
-                    </div>
-                    <!-- End .project-info -->
-                </div>
-                <!-- End .project -->
-            </div>
-        </div>
-    </div>
-    <!-- End #projects -->
 
-    <div id="skills">
-        <h2 class="heading">Skills</h2>
-        <ul>
-            <li>Python</li>
-            <li>Electric Power Systems</li>
-            <li>NumPy</li>
-            <li>Pandas</li>
-            <li>TensorFlow</li>
-            <li>Keras</li>
-            <li>SciPy</li>
-            <li>scikit-learn</li>
-            <li>Java</li>
-            <li>SQL</li>
-            <li>Docker</li>
-            <li>Control Systems</li>
-            <li>Signal Processing</li>
-            <li>Convex Optimization</li>
-            <li>Black-box Optimization</li>
-            <li>System Identification</li>
-            <li>Timeseries Analysis</li>
-            <li>Machine Learning</li>
-            <li>Statistical Modeling</li>
-        </ul>
-    </div>
-    <!-- End #skills -->
-
-    <div id="contact">
-        <h2>Get in Touch</h2>
-        <div id="contact-form">
-            <form method="POST" action="https://formspree.io/moqljgpp"">
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
-                <input type="email" name="_replyto" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
-        <!-- End #contact-form -->
-    </div>
-    <!-- End #contact -->
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-5 copyright">
-                    <p>
-                        Copyright &copy; 2021 DANIEL ARNOLD
-                    </p>
-                </div>
-                <div class="col-sm-2 top">
-                    <span id="to-top">
-                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div class="col-sm-5 social">
+                <!-- Skills Pills -->
+                <div class="skills-pills">
+                    <h3>Skills</h3>
                     <ul>
-                        <li>
-                            <a href="https://github.com/daniel-arnold" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/in/daniel-arnold-78b59269/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                        </li>
+                        <li>Python</li>
+                        <li>C/C++</li>
+                        <li>Julia</li>
+                        <li>MATLAB</li>
+                        <li>R</li>
+                        <li>SQL</li>
+                        <li>ML / Data Science</li>
+                        <li>Optimal Power Flow</li>
+                        <li>Capacity Expansion</li>
+                        <li>Unit Commitment</li>
                     </ul>
                 </div>
+
             </div>
+            <!-- End #tab-home -->
+
+            <!-- ===================== TAB 2: RESUME ===================== -->
+            <div id="tab-resume" class="tab-content">
+
+                <!-- Education -->
+                <div class="resume-section">
+                    <h3>Education</h3>
+                    <div class="education-block">
+                        <h4>University of California, Berkeley</h4>
+                        <span class="education-date">Aug 2025 &ndash; May 2026</span>
+                        <h5>Master's of Climate Solutions</h5>
+                        <p>Coursework: Data Science for Energy, Energy and Environmental Markets, Electric Transmission Systems, Special Topics in Energy</p>
+                    </div>
+                    <div class="education-block">
+                        <h4>Yale University</h4>
+                        <span class="education-date">Aug 2018 &ndash; May 2022</span>
+                        <h5>ABET-accredited B.S. Mechanical Engineering &amp; B.A. Economics; Certificate in Energy Studies</h5>
+                        <ul>
+                            <li><strong>Lichty &amp; Waters Prize</strong> &mdash; highest honor in Yale Mechanical Engineering</li>
+                            <li><strong>Outstanding Undergraduate Achievement Award</strong></li>
+                            <li>Engineering Capstone: A Method to Reduce Carbon Emissions from Concrete Usage in 3D Printing</li>
+                            <li>Economics Capstone: Hotelling vs Reality: Understanding the Dynamics of Global Oil Production</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="resume-section">
+                    <h3>Experience</h3>
+                    <div id="experience-timeline" class="resume-timeline">
+                        <div data-date="Jan 2026 &ndash; Present">
+                            <h3>Carbon Containment Lab</h3>
+                            <h4>Graduate Intern</h4>
+                            <ul>
+                                <li>Building predictive model for methane emission detection from orphaned oil wells</li>
+                                <li>Applying geospatial analysis and statistical modeling to prioritize well remediation</li>
+                                <li>Creating royalty model to incentivize plugging abandoned wells</li>
+                            </ul>
+                        </div>
+
+                        <div data-date="Jan 2026 &ndash; May 2026">
+                            <h3>SunStrong Management</h3>
+                            <h4>Solar Battery Optimization</h4>
+                            <ul>
+                                <li>Modelling monetization and VPP opportunities for ~500k residential storage systems</li>
+                                <li>Building price forecasting pipeline against ERCOT real-time market data</li>
+                                <li>Identifying revenue streams: policy incentives, TOU arbitrage, VPP aggregation</li>
+                            </ul>
+                        </div>
+
+                        <div data-date="Aug 2025 &ndash; May 2026">
+                            <h3>UC Berkeley</h3>
+                            <h4>Graduate Student Instructor</h4>
+                            <ul>
+                                <li>GSI for "Decision Analysis, Modeling, and Quantitative Methods" and "Introductory Marine Geochemistry"</li>
+                                <li>Writing complete homework assignments and labs for new courses</li>
+                            </ul>
+                        </div>
+
+                        <div data-date="Feb 2023 &ndash; Mar 2025">
+                            <h3>Flow Traders</h3>
+                            <h4>Commodities &amp; Energy Trader &mdash; New York, NY</h4>
+                            <ul>
+                                <li>Systematized trading workflows, increasing volume 4x and commodities profits 40%</li>
+                                <li>Co-built Centralized Execution Desk handling 90%+ of US office trading volume</li>
+                                <li>Won Coder of the Year 2024; youngest member of global Trader Tech Team</li>
+                            </ul>
+                        </div>
+
+                        <div data-date="May 2022 &ndash; Aug 2022">
+                            <h3>Goldman Sachs</h3>
+                            <h4>Summer Analyst &mdash; New York, NY</h4>
+                            <ul>
+                                <li>Analyzed risk model performance for custom benchmark tracking with decarbonization goals</li>
+                                <li>Created simulation tool adopted by hundreds of financial advisors</li>
+                            </ul>
+                        </div>
+                        <div data-date="Aug 2021 &ndash; May 2022">
+                            <h3>CASLAB</h3>
+                            <h4>RF Systems Research Assistant &mdash; Yale University</h4>
+                            <ul>
+                                <li>Built automated RF scanning system with Python-controlled instrumentation</li>
+                                <li>Developed data acquisition software with serial and GPIB hardware interfaces</li>
+                                <li>Instrumentation enables </li>
+                            </ul>
+                        </div>
+                        <div data-date="Jan 2021 &ndash; Aug 2021">
+                            <h3>Ellington Management Group</h3>
+                            <h4>Financial Mathematics Researcher &mdash; Old Greenwich, CT</h4>
+                            <ul>
+                                <li>Found probability density functions of credit default swaptions for new options strategy</li>
+                                <li>Presented research in PhD seminar weekly; developed VIX trading strategy</li>
+                            </ul>
+                        </div>
+                        
+
+                        <div data-date="Aug 2019 &ndash; December 2020">
+                            <h3>MCubed Lab / Qiu Lab</h3>
+                            <h4>Materials Science ML Researcher &mdash; Yale University</h4>
+                            <ul>
+                                <li>ML classification to predict phase stability of high entropy alloys</li>
+                                <li>Double perovskite band gap prediction for solar cells</li>
+                                <li>Received George J. Schulz Fellowship in Physical Sciences</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards & Certifications -->
+                <div class="resume-section">
+                    <h3>Awards &amp; Certifications</h3>
+                    <ul class="awards-list">
+                        <li><strong>Lichty &amp; Waters Prize</strong> &mdash; Highest honor in Yale Mechanical Engineering</li>
+                        <li><strong>Outstanding Undergraduate Achievement Award</strong> &mdash; Yale University</li>
+                        <li><strong>George J. Schulz Fellowship</strong> &mdash; Physical Sciences, Yale</li>
+                        <li><strong>Coder of the Year 2024</strong> &mdash; Flow Traders</li>
+                        <li>Certificate in Teaching and Learning in Higher Education &mdash; UC Berkeley (in progress)</li>
+                        <li>Engineer-in-Training (Mechanical) &mdash; NCEESf</li>
+                        <li>Certificate in Energy Studies &mdash; Yale University</li>
+                    </ul>
+                </div>
+
+                <!-- Download Resume -->
+                <div class="resume-section resume-download">
+                    <a href="content/cloitmanResume2026.pdf" download class="btn-rounded-theme">
+                        <i class="fa fa-download"></i> Download Full Resume
+                    </a>
+                </div>
+
+            </div>
+            <!-- End #tab-resume -->
+
+            <!-- ===================== TAB 3: PROJECTS ===================== -->
+            <div id="tab-projects" class="tab-content">
+
+                <!-- Featured Project -->
+                <div class="project-category">
+                    <h3>Featured Project</h3>
+                    <a href="projects/vpp.html" class="featured-project-link">
+                        <div class="featured-project">
+                            <h4><i class="fa fa-bolt"></i> Virtual Power Plant (VPP) Model</h4>
+                            <p class="featured-subtitle">Combines Data Science for Energy, Special Topics in Energy, Electric Transmission Systems coursework + SunStrong VPP work</p>
+                            <p>
+                                Building a comprehensive virtual power plant model that integrates optimal power flow analysis with battery placement optimization for residential solar systems. The model uses Python and Julia to solve large-scale optimization problems across transmission networks, identifying optimal locations and sizing for distributed battery storage that maximizes revenue through energy arbitrage, demand response, and grid services. Incorporates real-time ERCOT market data for price forecasting and monetization analysis.
+                            </p>
+                            <span class="project-tags">Python &middot; Julia &middot; Optimal Power Flow &middot; Battery Optimization &middot; ERCOT Data</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- In-Progress Projects -->
+                <div class="project-category">
+                    <h3>In Progress</h3>
+                    <div class="projects-grid">
+                        <a href="projects/sunstrong.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-info">
+                                    <h4>SunStrong Solar Battery Optimization</h4>
+                                    <p>Modelling monetization and VPP opportunities for residential storage systems. Building price forecasting pipeline against ERCOT real-time market data for ~500k residential solar systems.</p>
+                                    <span class="project-tags">Python &middot; ERCOT &middot; Time-Series &middot; Optimization</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="projects/carbon-containment.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-info">
+                                    <h4>Carbon Containment Lab</h4>
+                                    <p>Building predictive model for methane emission detection from orphaned oil wells. Applying geospatial analysis and statistical modeling to prioritize well remediation.</p>
+                                    <span class="project-tags">Python &middot; Geospatial &middot; Statistical Modeling</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="projects/power-flow.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-info">
+                                    <h4>Power Flow Modelling</h4>
+                                    <p>Analyzing electric transmission systems using optimal power flow and capacity expansion models. Studying grid reliability and renewable integration challenges.</p>
+                                    <span class="project-tags">Julia &middot; Python &middot; Power Systems &middot; Optimization</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Completed Projects -->
+                <div class="project-category">
+                    <h3>Completed</h3>
+                    <div class="projects-grid">
+                        <a href="projects/flow-traders.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-image">
+                                    <img src="images/flow-traders/trading.png" alt="Flow Traders">
+                                </div>
+                                <div class="project-card-info">
+                                    <h4>Flow Traders Product Design</h4>
+                                    <p>Automated trading desks, reducing headcount from five to two. Raised profit 40% and increased trades 400%. Co-built Centralized Execution Desk handling 90%+ of US trading. Won Coder of the Year 2024.</p>
+                                    <span class="project-tags">Python &middot; SQL &middot; C++ &middot; Product Design</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="projects/goldman.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-image">
+                                    <img src="images/goldman/gsam.jpg" alt="Goldman Sachs">
+                                </div>
+                                <div class="project-card-info">
+                                    <h4>Goldman Sachs Portfolio Modelling Tool</h4>
+                                    <p>Analyzed risk models for custom benchmark tracking with decarbonization goals. Created Excel VBA simulation tool adopted by hundreds of financial advisors.</p>
+                                    <span class="project-tags">Excel VBA &middot; Stochastic Calculus &middot; Optimization</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="projects/ellington.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-image">
+                                    <img src="images/ellington/ellington.png" alt="Ellington Management Group">
+                                </div>
+                                <div class="project-card-info">
+                                    <h4>Ellington Management Group &mdash; Options Research</h4>
+                                    <p>Programmed twelve calibration routines to create probability densities from option prices. Built algorithms producing twice-differentiable density curves pricing options to within four cents.</p>
+                                    <span class="project-tags">Python &middot; C++ &middot; Stochastic Calculus &middot; Optimization</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="projects/solar-cells.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-image">
+                                    <img src="images/mcubed/cover.png" alt="Solar Cell Materials Research">
+                                </div>
+                                <div class="project-card-info">
+                                    <h4>Solar Cell Materials Research</h4>
+                                    <p>ML classification to predict stable double perovskites for solar panels. Identified 100+ promising compounds for synthesis. Received George J. Schulz Fellowship.</p>
+                                    <span class="project-tags">Python &middot; scikit-learn &middot; Materials Science</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#" id="view-more-projects" class="btn-rounded-theme">View More Projects</a>
+                    </div>
+
+                    <div id="more-projects">
+                        <div class="projects-grid">
+                            <a href="projects/solar-cells.html" class="project-card-link">
+                                <div class="project-card">
+                                    <div class="project-card-image">
+                                        <img src="images/mcubed/cover.png" alt="High Entropy Alloys">
+                                    </div>
+                                    <div class="project-card-info">
+                                        <h4>High Entropy Alloy Phase Prediction</h4>
+                                        <p>Applied ML classification to predict phase stability of high entropy alloys at MCubed Lab, Yale. Sifted through thousands of crystal features for predictive modeling.</p>
+                                        <span class="project-tags">Python &middot; scikit-learn &middot; Materials Science</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="projects/rf-scanner.html" class="project-card-link">
+                                <div class="project-card">
+                                    <div class="project-card-image">
+                                        <img src="images/cubesat/cubesat.png" alt="Counterfeit RF Scanner">
+                                    </div>
+                                    <div class="project-card-info">
+                                        <h4>Counterfeit RF Scanner</h4>
+                                        <p>Modified a 3D printer to analyze electronic parts for counterfeits through electromagnetic radiation. Built modular Python library for RaspberryPi control. Total cost $350 vs $10k+ existing models.</p>
+                                        <span class="project-tags">Python &middot; CAD &middot; Circuitry &middot; GCode</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="projects/concrete-3d.html" class="project-card-link">
+                                <div class="project-card">
+                                    <div class="project-card-image">
+                                        <img src="images/concrete-3d/slump.png" alt="3D-Printed Houses">
+                                    </div>
+                                    <div class="project-card-info">
+                                        <h4>Carbon Sequestration in 3D-Printed Houses</h4>
+                                        <p>Capstone with SQ4D to reduce carbon emissions from 3D-printed concrete. Reduced construction CO2 by two tons and costs ~$3000 per house.</p>
+                                        <span class="project-tags">Materials Science &middot; CAD &middot; Python</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="projects/cubesat.html" class="project-card-link">
+                                <div class="project-card">
+                                    <div class="project-card-image">
+                                        <img src="images/cubesat/cad.png" alt="Radiation Detection CubeSat">
+                                    </div>
+                                    <div class="project-card-info">
+                                        <h4>Radiation Detection CubeSat</h4>
+                                        <p>Designed CubeSat housing a custom Geiger counter for exoplanet magnetosphere detection. Carbon fiber tubes with 3D-printed low-infill fittings.</p>
+                                        <span class="project-tags">CAD &middot; Circuit Design &middot; 3D Printing</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="projects/podocyte.html" class="project-card-link">
+                                <div class="project-card">
+                                    <div class="project-card-image">
+                                        <img src="images/podocyte/cover.png" alt="Podocyte Visualization">
+                                    </div>
+                                    <div class="project-card-info">
+                                        <h4>Podocyte Visualization</h4>
+                                        <p>Published research analyzing 3D kidney cell structure. Created first 3D visualizations of glomerular basement membrane. Published in JASN (2022).</p>
+                                        <span class="project-tags">Python &middot; Amira &middot; Electron Microscopy</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="projects/cad.html" class="project-card-link">
+                                <div class="project-card">
+                                    <div class="project-card-image">
+                                        <img src="images/cad/corkscrew.png" alt="Computer-Aided Design">
+                                    </div>
+                                    <div class="project-card-info">
+                                        <h4>Computer-Aided Design</h4>
+                                        <p>Designed and 3D printed household objects: corkscrew with second-class lever system and nut crusher with five-bar mechanism.</p>
+                                        <span class="project-tags">SOLIDWORKS &middot; 3D Printing &middot; Statics/Dynamics</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="projects/teaching.html" class="project-card-link">
+                                <div class="project-card">
+                                    <div class="project-card-image">
+                                        <img src="images/teaching/code.png" alt="Teaching">
+                                    </div>
+                                    <div class="project-card-info">
+                                        <h4>Teaching</h4>
+                                        <p>Taught six undergraduate courses at Yale and one undergraduate and one graduate course at UC Berkeley. Created educational exercises and labs; taught lectures including Boundary Layer Theory for Aerodynamicss.</p>
+                                        <span class="project-tags">Python &middot; Fluid Dynamics &middot; Mathematics</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End #tab-projects -->
+
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 copyright">
+                            <p>Copyright &copy; <span id="copyright-year"></span> Charlie Loitman</p>
+                        </div>
+                        <div class="col-sm-2 top">
+                            <span id="to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-sm-5 social">
+                            <ul>
+                                <li><a href="https://github.com/cloitman/my_tools" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
         </div>
-    </footer>
-    <!-- End footer -->
+        <!-- End #main-content -->
+    </div>
+    <!-- End #page-wrapper -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
+    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

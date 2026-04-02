@@ -1,13 +1,6 @@
 /*!
-    Title: Dev Portfolio Template
-    Version: 1.2.1
-    Last Change: 08/27/2017
-    Author: Ryan Fitzgerald
-    Repo: https://github.com/RyanFitzgerald/devportfolio-template
-    Issues: https://github.com/RyanFitzgerald/devportfolio-template/issues
-
-    Description: This file contains all the scripts associated with the single-page
-    portfolio website.
+    Title: Charlie Loitman Portfolio
+    Description: Tab switching, dark mode, and interactive features.
 */
 
 (function($) {
@@ -15,46 +8,109 @@
     // Remove no-js class
     $('html').removeClass('no-js');
 
-    // Animate to section when nav is clicked
-    $('header a').click(function(e) {
+    // ==================== Tab Switching ====================
 
-        // Treat as normal link if no-scroll class
-        if ($(this).hasClass('no-scroll')) return;
+    var tabButtons = $('.tab-nav-btn');
+    var tabContents = $('.tab-content');
+    var tabMap = { 'home': 'tab-home', 'resume': 'tab-resume', 'projects': 'tab-projects' };
 
+    function switchTab(tabId) {
+        // Hide all tab contents, show target
+        tabContents.removeClass('active');
+        $('#' + tabId).addClass('active');
+
+        // Update nav buttons
+        tabButtons.removeClass('active');
+        tabButtons.filter('[data-tab="' + tabId + '"]').addClass('active');
+
+        // Update URL hash
+        var hashName = '';
+        for (var key in tabMap) {
+            if (tabMap[key] === tabId) { hashName = key; break; }
+        }
+        if (hashName) {
+            history.replaceState(null, null, '#' + hashName);
+        }
+
+        // Scroll main content to top
+        $('#main-content').scrollTop(0);
+        window.scrollTo(0, 0);
+    }
+
+    // Tab nav button clicks
+    tabButtons.on('click', function() {
+        switchTab($(this).data('tab'));
+    });
+
+    // Mobile menu tab links
+    $('header .tab-link').on('click', function(e) {
         e.preventDefault();
-        var heading = $(this).attr('href');
-        var scrollDistance = $(heading).offset().top;
-
-        $('html, body').animate({
-            scrollTop: scrollDistance + 'px'
-        }, Math.abs(window.pageYOffset - $(heading).offset().top) / 1);
-
-        // Hide the menu once clicked if mobile
+        switchTab($(this).data('tab'));
+        // Close mobile menu
         if ($('header').hasClass('active')) {
             $('header, body').removeClass('active');
         }
     });
 
-    // Scroll to top
-    $('#to-top').click(function() {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 500);
+    // Project preview cards on Home tab link to Projects tab
+    $('.project-preview').on('click', function(e) {
+        e.preventDefault();
+        switchTab('tab-projects');
     });
 
-    // Scroll to first element
-    $('#lead-down span').click(function() {
-        var scrollDistance = $('#lead').next().offset().top;
-        $('html, body').animate({
-            scrollTop: scrollDistance + 'px'
-        }, 500);
+    // Sidebar name click → Home tab
+    $('#sidebar-name').on('click', function() {
+        switchTab('tab-home');
     });
 
-    // Create timeline
+    // On load, check hash and show correct tab
+    function initTabFromHash() {
+        var hash = window.location.hash.replace('#', '');
+        if (hash && tabMap[hash]) {
+            switchTab(tabMap[hash]);
+        }
+    }
+    initTabFromHash();
+
+    // Handle browser back/forward
+    $(window).on('hashchange', function() {
+        initTabFromHash();
+    });
+
+    // ==================== Dark Mode ====================
+
+    var darkToggle = $('#dark-toggle');
+    var body = $('body');
+
+    function setDarkMode(enabled) {
+        if (enabled) {
+            body.addClass('dark-mode');
+        } else {
+            body.removeClass('dark-mode');
+        }
+        try {
+            localStorage.setItem('darkMode', enabled ? 'true' : 'false');
+        } catch(e) {}
+    }
+
+    // On load, check localStorage
+    try {
+        var saved = localStorage.getItem('darkMode');
+        if (saved === 'true') {
+            body.addClass('dark-mode');
+        }
+    } catch(e) {}
+
+    // Toggle click
+    darkToggle.on('click', function() {
+        setDarkMode(!body.hasClass('dark-mode'));
+    });
+
+    // ==================== Experience Timeline ====================
+
     $('#experience-timeline').each(function() {
-
-        $this = $(this); // Store reference to this
-        $userContent = $this.children('div'); // user content
+        var $this = $(this);
+        var $userContent = $this.children('div');
 
         // Create each timeline block
         $userContent.each(function() {
@@ -69,11 +125,17 @@
         // Add dates to the timeline if exists
         $this.find('.vtimeline-content').each(function() {
             var date = $(this).data('date');
-            if (date) { // Prepend if exists
-                $(this).parent().prepend('<span class="vtimeline-date">'+date+'</span>');
+            if (date) {
+                $(this).parent().prepend('<span class="vtimeline-date">' + date + '</span>');
             }
         });
+    });
 
+    // ==================== Scroll & Mobile ====================
+
+    // Scroll to top
+    $('#to-top').click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 500);
     });
 
     // Open mobile menu
@@ -86,8 +148,9 @@
         $('header, body').removeClass('active');
     });
 
-    // Load additional projects
-    $('#view-more-projects').click(function(e){
+    // ==================== View More Projects ====================
+
+    $('#view-more-projects').click(function(e) {
         e.preventDefault();
         $(this).fadeOut(300, function() {
             $('#more-projects').fadeIn(300);

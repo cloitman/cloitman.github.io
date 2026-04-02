@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtual Power Plant (VPP) Model - Charlie Loitman</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="page-wrapper">
+        <aside id="sidebar">
+            <div class="sidebar-sticky">
+                <div class="sidebar-photo">
+                    <img src="../images/headshot.jpg" alt="Charlie Loitman">
+                </div>
+                <h1 class="sidebar-name"><a href="../index.html" style="color:#fff;text-decoration:none;">Charlie Loitman</a></h1>
+                <p class="sidebar-tagline">Engineer. Data Scientist.<br>Energy Systems.</p>
+                <div class="sidebar-info">
+                    <p><i class="fa fa-map-marker"></i> Berkeley, CA</p>
+                    <p><i class="fa fa-graduation-cap"></i> UC Berkeley MCS '26</p>
+                    <p><i class="fa fa-graduation-cap"></i> Yale BS '22</p>
+                </div>
+                <div class="sidebar-links">
+                    <a href="https://github.com/cloitman" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+                </div>
+                <a href="../content/cloitmanResume2026.pdf" download class="sidebar-resume-btn">Download Resume</a>
+                <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+                    <i class="fa fa-moon-o"></i>
+                    <i class="fa fa-sun-o"></i>
+                </button>
+            </div>
+        </aside>
+
+        <div class="project-detail-wrapper">
+            <nav class="project-detail-nav">
+                <a href="../index.html#projects" class="back-btn"><i class="fa fa-arrow-left"></i> Back to Projects</a>
+            </nav>
+
+            <div class="project-detail">
+                <div class="project-detail-header">
+                    <h1>Virtual Power Plant (VPP) Model</h1>
+                    <p class="project-detail-subtitle">Combines Data Science for Energy, Special Topics in Energy, Electric Transmission Systems coursework + SunStrong VPP work</p>
+                    <p class="project-detail-meta">August 2025 - May 2026 &bull; UC Berkeley</p>
+                </div>
+
+                <div class="project-detail-hero">
+                    <img src="../images/project.jpg" alt="Virtual Power Plant Model">
+                </div>
+
+                <div class="project-detail-body">
+                    <h2>Overview</h2>
+                    <p>Building a comprehensive virtual power plant model that integrates optimal power flow analysis with battery placement optimization for residential solar systems. The model uses Python and Julia to solve large-scale optimization problems across transmission networks, identifying optimal locations and sizing for distributed battery storage that maximizes revenue through energy arbitrage, demand response, and grid services.</p>
+
+                    <h2>Academic Foundation</h2>
+                    <p>This project synthesizes coursework from multiple UC Berkeley classes:</p>
+                    <ul>
+                        <li>Data Science for Energy: statistical methods and machine learning for energy forecasting</li>
+                        <li>Special Topics in Energy: understanding energy market structures and policy incentives</li>
+                        <li>Electric Transmission Systems: power flow analysis, capacity expansion, and grid reliability</li>
+                    </ul>
+
+                    <h2>Technical Approach</h2>
+                    <p>The core of the model uses optimal power flow (OPF) formulations implemented in Julia's JuMP optimization framework, combined with Python-based data pipelines for ingesting and processing real-time ERCOT market data. The battery placement optimization considers factors including local load profiles, grid congestion patterns, and time-of-use pricing to identify locations where distributed storage provides the greatest value.</p>
+
+                    <h2>Industry Application</h2>
+                    <p>The model incorporates real-world data and constraints from work with SunStrong Management, which manages approximately 500,000 residential solar systems. Revenue streams analyzed include time-of-use arbitrage, demand response participation, capacity market revenues, and aggregated virtual power plant services.</p>
+                </div>
+
+                <div class="project-detail-skills">
+                    <ul>
+                        <li>Python</li>
+                        <li>Julia</li>
+                        <li>JuMP</li>
+                        <li>Optimal Power Flow</li>
+                        <li>Battery Optimization</li>
+                        <li>ERCOT Data</li>
+                        <li>Time-Series Forecasting</li>
+                    </ul>
+                </div>
+
+                <div class="project-detail-back-bottom">
+                    <a href="../index.html#projects" class="back-btn"><i class="fa fa-arrow-left"></i> Back to Projects</a>
+                </div>
+            </div>
+
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 copyright">
+                            <p>Copyright &copy; <span id="copyright-year"></span> Charlie Loitman</p>
+                        </div>
+                        <div class="col-sm-2 top">
+                            <span id="to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-sm-5 social">
+                            <ul>
+                                <li><a href="https://github.com/cloitman/my_tools" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    (function() {
+        var body = document.body;
+        try { if (localStorage.getItem('darkMode') === 'true') body.classList.add('dark-mode'); } catch(e) {}
+        document.getElementById('dark-toggle').addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            try { localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'true' : 'false'); } catch(e) {}
+        });
+        document.getElementById('to-top').addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    })();
+    </script>
+</body>
+</html>

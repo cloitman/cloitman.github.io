@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Materials Science ML Research - Charlie Loitman</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="page-wrapper">
+        <aside id="sidebar">
+            <div class="sidebar-sticky">
+                <div class="sidebar-photo">
+                    <img src="../images/headshot.jpg" alt="Charlie Loitman">
+                </div>
+                <h1 class="sidebar-name"><a href="../index.html" style="color:#fff;text-decoration:none;">Charlie Loitman</a></h1>
+                <p class="sidebar-tagline">Engineer. Data Scientist.<br>Energy Systems.</p>
+                <div class="sidebar-info">
+                    <p><i class="fa fa-map-marker"></i> Berkeley, CA</p>
+                    <p><i class="fa fa-graduation-cap"></i> UC Berkeley MCS '26</p>
+                    <p><i class="fa fa-graduation-cap"></i> Yale BS '22</p>
+                </div>
+                <div class="sidebar-links">
+                    <a href="https://github.com/cloitman" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+                </div>
+                <a href="../content/cloitmanResume2026.pdf" download class="sidebar-resume-btn">Download Resume</a>
+                <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+                    <i class="fa fa-moon-o"></i>
+                    <i class="fa fa-sun-o"></i>
+                </button>
+            </div>
+        </aside>
+
+        <div class="project-detail-wrapper">
+            <nav class="project-detail-nav">
+                <a href="../index.html#projects" class="back-btn"><i class="fa fa-arrow-left"></i> Back to Projects</a>
+            </nav>
+
+            <div class="project-detail">
+                <div class="project-detail-header">
+                    <h1>Materials Science ML Research</h1>
+                    <p class="project-detail-subtitle">Machine learning for solar cell materials and high entropy alloy phase prediction</p>
+                    <p class="project-detail-meta"><strong>Setting:</strong> January 2020 &ndash; May 2022 &bull; MCubed Lab &amp; Qiu Lab, Yale University</p>
+                </div>
+
+                <div class="project-detail-hero">
+                    <img src="../images/mcubed/cover.png" alt="Materials Science ML Research">
+                </div>
+
+                <div class="project-detail-body">
+                    <h2>Overview</h2>
+                    <p>Over two years in Yale's MCubed Lab and Qiu Lab, I applied machine learning to two materials science challenges: predicting the existence of stable double perovskites for solar panels and predicting the phase stability of high entropy alloys. Both projects used classification techniques to narrow vast search spaces of candidate materials, saving significant experimental time and cost. I received the George J. Schulz Fellowship in Physical Sciences to support this work.</p>
+
+                    <h2>Double Perovskite Solar Cell Research</h2>
+                    <p>Current photovoltaic technologies are highly effective, but have a costly and highly polluting synthesis process. To make cheaper, cleaner, and more effective solar cells, experimental material scientists aim to synthesize new double perovskites to test their photovoltaic properties. Nonetheless, this experimentation is a costly process, requiring a strong theoretical understanding of possible crystals.</p>
+                    <p>I spent my time sifting through thousands of crystal features to generate a simple six factor model to predict crystal stability. To complete this work, I used SciPy machine learning packages to solve this classification problem. Techniques included RandomForest model cleaning, multi-fold validation, and logistic regressions. I identified over 100 promising double-perovskites for synthesis and materials testing.</p>
+                    <p>After identifying these promising materials, I continued my work with the Qiu Lab at Yale. The results form the basis for a working paper.</p>
+
+                    <h3>Publication</h3>
+                    <p>Thind, A.S., Loitman, C., Zhang, Z., Hartman, S., Pilania, G., Mishra, R. (in progress). "Composition driven formability and electronic structure tunability of Bi-based double perovskite oxides." Working paper available upon request.</p>
+
+                    <h2>High Entropy Alloy Phase Prediction</h2>
+                    <p>High entropy alloys (HEAs) are a relatively new class of materials composed of five or more principal elements in roughly equal proportions, which can exhibit exceptional mechanical properties including high strength, corrosion resistance, and thermal stability.</p>
+                    <p>I applied machine learning classification techniques to predict whether a given alloy composition would form a stable single phase, multiple phases, or an amorphous structure. Using scikit-learn, I employed RandomForest classifiers, feature importance analysis, and multi-fold cross-validation to build predictive models from thousands of crystal features.</p>
+                    <p>Predicting phase stability computationally is important because experimental synthesis and testing of new alloy compositions is expensive and time-consuming. By narrowing the search space with ML models, materials scientists can focus their experimental efforts on the most promising candidates.</p>
+                </div>
+
+                <div class="project-detail-gallery">
+                    <h2>Gallery</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="../images/mcubed/cover.png" alt="Materials research overview">
+                            <div class="gallery-caption">Materials research overview</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="../images/mcubed/features.png" alt="Feature analysis for crystal stability prediction">
+                            <div class="gallery-caption">Feature analysis for crystal stability prediction</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-detail-skills">
+                    <h2>Skills &amp; Technologies</h2>
+                    <ul>
+                        <li>Python</li>
+                        <li>scikit-learn</li>
+                        <li>SciPy</li>
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                        <li>Machine Learning</li>
+                        <li>Classification</li>
+                        <li>Feature Analysis</li>
+                        <li>Materials Science</li>
+                    </ul>
+                </div>
+
+                <div class="project-detail-back-bottom">
+                    <a href="../index.html#projects" class="btn-rounded-theme"><i class="fa fa-arrow-left"></i> Back to Projects</a>
+                </div>
+            </div>
+
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 copyright">
+                            <p>Copyright &copy; <span id="copyright-year"></span> Charlie Loitman</p>
+                        </div>
+                        <div class="col-sm-2 top">
+                            <span id="to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-sm-5 social">
+                            <ul>
+                                <li><a href="https://github.com/cloitman/my_tools" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    (function() {
+        var body = document.body;
+        try { if (localStorage.getItem('darkMode') === 'true') body.classList.add('dark-mode'); } catch(e) {}
+        document.getElementById('dark-toggle').addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            try { localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'true' : 'false'); } catch(e) {}
+        });
+        document.getElementById('to-top').addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    })();
+    </script>
+</body>
+</html>
