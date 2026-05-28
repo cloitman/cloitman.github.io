@@ -4,12 +4,64 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Virtual Power Plant (VPP) Model - Charlie Loitman</title>
+    <title>Virtual Power Plant Research - Charlie Loitman</title>
     <link rel="shortcut icon" href="../battery.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
+    <style>
+        .project-figure {
+            margin: 1.5rem 0 2rem;
+        }
+        .project-figure img {
+            width: 100%;
+            max-width: 700px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .project-figure figcaption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        .dark-mode .project-figure figcaption {
+            color: #aaa;
+        }
+        .dark-mode .project-figure img {
+            border-color: rgba(255,255,255,0.1);
+        }
+        .project-github-link {
+            display: inline-block;
+            margin: 0.5rem 0 1.25rem;
+            padding: 0.4rem 1rem;
+            border: 1px solid #555;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            color: inherit;
+            text-decoration: none;
+        }
+        .project-github-link:hover {
+            background: rgba(0,0,0,0.06);
+            text-decoration: none;
+            color: inherit;
+        }
+        .dark-mode .project-github-link:hover {
+            background: rgba(255,255,255,0.08);
+        }
+        .project-section-divider {
+            border: none;
+            border-top: 1px solid rgba(0,0,0,0.12);
+            margin: 2.5rem 0;
+        }
+        .dark-mode .project-section-divider {
+            border-top-color: rgba(255,255,255,0.12);
+        }
+    </style>
 </head>
 <body>
     <div id="page-wrapper">
@@ -45,43 +97,128 @@
 
             <div class="project-detail">
                 <div class="project-detail-header">
-                    <h1>Virtual Power Plant (VPP) Model</h1>
-                    <p class="project-detail-subtitle">Combines Data Science for Energy, Special Topics in Energy, Electric Transmission Systems coursework + SunStrong VPP work</p>
-                    <p class="project-detail-meta">August 2025 - May 2026 &bull; UC Berkeley</p>
+                    <h1>Virtual Power Plant Research</h1>
+                    <p class="project-detail-subtitle">Battery allocation, arbitrage optimization, and residential storage deployment strategy</p>
+                    <p class="project-detail-meta">January 2026 &ndash; May 2026 &bull; UC Berkeley &amp; SunStrong Management</p>
                 </div>
 
                 <div class="project-detail-hero">
-                    <img src="../images/vpp/solarStorage.jpg" alt="Virtual Power Plant Model">
+                    <img src="../images/vpp/solarStorage.jpg" alt="Virtual Power Plant Research">
                 </div>
 
                 <div class="project-detail-body">
                     <h2>Overview</h2>
-                    <p>Building a comprehensive virtual power plant model that integrates optimal power flow analysis with battery placement optimization for residential solar systems. The model uses Python and Julia to solve large-scale optimization problems across transmission networks, identifying optimal locations and sizing for distributed battery storage that maximizes revenue through energy arbitrage, demand response, and grid services.</p>
+                    <p>Three related projects exploring how distributed battery storage can be deployed, optimized, and monetized across residential and transmission-scale systems. Two academic research papers develop convex optimization frameworks for battery placement and arbitrage on a 13-node IEEE test feeder, using real CAISO market data. A third project applies this research foundation — along with financial modeling and policy analysis of publicly available data — to produce deployment recommendations for SunStrong Management, an asset manager with approximately 500,000 residential solar systems leased across the United States.</p>
 
-                    <h2>Academic Foundation</h2>
-                    <p>This project synthesizes coursework from multiple UC Berkeley classes:</p>
+                    <hr class="project-section-divider">
+
+                    <!-- ========== PROJECT 1: CEE295 ========== -->
+                    <h2>Grid Economic Expansion via Battery Storage</h2>
+                    <p class="project-detail-meta" style="margin-bottom:0.75rem;">CEE295: Data Science for Energy &bull; UC Berkeley &bull; May 2026</p>
+                    <a href="https://github.com/ThibaudCambronne/vpp-controller" target="_blank" class="project-github-link"><i class="fa fa-github"></i> &nbsp;ThibaudCambronne/vpp-controller</a>
+
+                    <p>This project asks how a social planner should allocate a fixed budget of battery storage across the buses of a small distribution network to minimize thermal generation costs and expand the effective demand frontier. The setting is a 13-node radial feeder with a single generation source, duck-curve demand profiles derived from PG&E load data, and time-varying generation costs drawn from CAISO Day-Ahead Market Locational Marginal Prices (LMPs).</p>
+
+                    <p>We formulate a convex optimization problem using LinDistFlow power flow constraints and battery state-of-charge dynamics, with a penalty on curtailed demand that captures the price elasticity of electricity. The objective minimizes generation cost while penalizing unserved load, so the solver jointly optimizes battery sizing, siting, and hourly dispatch across a full 24-hour operating day for each of four seasonal scenarios.</p>
+
+                    <figure class="project-figure">
+                        <img src="../images/vpp/ieee13busSystem.png" alt="13-node IEEE radial test feeder used for optimization">
+                        <figcaption>The 13-node radial distribution network used as the basis for both optimization models. Node 0 is the generation source; all other nodes carry load.</figcaption>
+                    </figure>
+
+                    <p>The spring scenario — where the duck curve is most pronounced and midday generation prices go negative — yields the largest benefit from storage. The optimal total capacity lies between 22 and 28 MWh, with marginal grid benefit flattening above roughly 30 MWh. Across all budget scenarios, battery siting converges decisively to node 1, which sits immediately downstream of the generation source and serves as the hub through which all downstream load is served. Placing storage at this single bottleneck node eliminates the primary source of line losses and provides the greatest system-wide benefit.</p>
+
+                    <figure class="project-figure">
+                        <img src="../images/vpp/Grid Economic Expansion/slack_3d_cap8MWh.png" alt="3D battery dispatch across all nodes and hours at 8 MWh capacity">
+                        <figcaption>3D dispatch visualization at 8 MWh total capacity. Charging (negative) occurs during midday negative-price hours; discharging (positive) into the evening ramp captures the full duck-curve spread.</figcaption>
+                    </figure>
+
+                    <figure class="project-figure">
+                        <img src="../images/vpp/Grid Economic Expansion/node_12_dispatch_by_capacity.png" alt="Battery dispatch at node 12 across capacity scenarios">
+                        <figcaption>Dispatch behavior at node 12 for increasing capacity budgets. Secondary nodes receive meaningful allocation only after the central node 1 reaches its capacity limit.</figcaption>
+                    </figure>
+
+                    <figure class="project-figure">
+                        <img src="../images/vpp/Grid Economic Expansion/node_profit_by_capacity.png" alt="Node profit by total battery capacity">
+                        <figcaption>Grid cost savings attributable to each node as total installed capacity grows. Node 1 dominates at every budget level; profit growth at secondary nodes only begins once node 1 saturates.</figcaption>
+                    </figure>
+
+                    <hr class="project-section-divider">
+
+                    <!-- ========== PROJECT 2: ENERES 254 ========== -->
+                    <h2>Battery Arbitrage Optimization Across a Feeder</h2>
+                    <p class="project-detail-meta" style="margin-bottom:0.75rem;">ENERES 254: Electric Transmission Systems &bull; UC Berkeley &bull; April 2026</p>
+                    <a href="https://github.com/cloitman/vpp-controller-arb" target="_blank" class="project-github-link"><i class="fa fa-github"></i> &nbsp;cloitman/vpp-controller-arb</a>
+
+                    <p>This companion project reframes the battery allocation problem from the perspective of profit-maximizing asset managers rather than a social planner. In the context of real-world VPP operation — motivated directly by SunStrong Management's decision of which households to prioritize for battery installation — asset managers want to maximize arbitrage revenue from time-of-use price spreads, not minimize total system cost.</p>
+
+                    <p>We implement a two-stage CVXPY optimization. Stage 1 solves the standard OPF without batteries to extract Locational Marginal Prices (LMPs) as dual variables on the power balance constraint — these serve as the naïve price signal that battery operators observe. Stage 2 maximizes battery arbitrage profits against those LMPs using LinDistFlow and full battery constraints (charge/discharge efficiency, SOC dynamics, daily cycle constraint, total capacity budget). This two-stage design models the realistic setting where individual operators treat prices as fixed and do not internalize their aggregate impact on congestion.</p>
+
+                    <figure class="project-figure">
+                        <img src="../images/vpp/Arbitrage/node_2_dispatch_and_lmp.png" alt="Battery dispatch and LMP at node 2">
+                        <figcaption>Battery dispatch (charge/discharge) overlaid with the LMP price signal at node 2. Batteries charge aggressively during the midday price trough and discharge into the evening peak, confirming textbook duck-curve arbitrage behavior.</figcaption>
+                    </figure>
+
+                    <figure class="project-figure">
+                        <img src="../images/vpp/Arbitrage/battery_dispatch_3d_cap26MWh.png" alt="3D battery dispatch at optimal 26 MWh capacity">
+                        <figcaption>Full 3D dispatch across all 13 nodes and 24 hours at the optimal 26 MWh installed capacity. Capacity concentrates at nodes near cheap generation or with high local LMPs; dispatch timing is consistent across nodes.</figcaption>
+                    </figure>
+
+                    <figure class="project-figure">
+                        <img src="../images/vpp/Arbitrage/capacity_allocation_by_node.png" alt="Fraction of total battery capacity allocated to each node">
+                        <figcaption>Battery capacity allocation by node across all budget scenarios (2–26 MWh). Node 1 absorbs 75–100% of capacity at every budget level, reflecting its position at the network's only significant bottleneck.</figcaption>
+                    </figure>
+
+                    <figure class="project-figure">
+                        <img src="../images/vpp/Arbitrage/node_profit_by_capacity.png" alt="Arbitrage profit by node and capacity scenario">
+                        <figcaption>Arbitrage profit earned per node across capacity scenarios. Profits are concentrated at nodes 2, 3, 7, 9, and 12. Node 1 earns more than an order of magnitude more profit than most other nodes due to its dominant capacity share.</figcaption>
+                    </figure>
+
+                    <p>Key findings: battery siting converges to low-cost generating nodes and highly connected network hubs; dispatch profiles confirm duck-curve arbitrage independent of capacity; and profit growth flattens above 22 MWh as aggregate battery activity compresses the LMP spread that arbitrage depends on. The highest-value siting location in any radial network is the node immediately downstream of the most congested line — identifying this in a real network requires a congestion map and shadow price analysis.</p>
+
+                    <hr class="project-section-divider">
+
+                    <!-- ========== PROJECT 3: SUNSTRONG MEMO ========== -->
+                    <h2>California Residential Storage Deployment Strategy</h2>
+                    <p class="project-detail-meta" style="margin-bottom:0.75rem;">SunStrong Management &bull; April 2026</p>
+
+                    <p>Prepared for Cisco DeVries at SunStrong Management, this policy and financial analysis translates the academic optimization work into actionable deployment recommendations for SunStrong's fleet of residential solar systems. The analysis uses publicly available CAISO, CPUC, and utility rate data to evaluate economics by California territory and identify which homes to target first.</p>
+
+                    <p>California is the clearest near-term market: it leads the U.S. in distributed solar (14,479 MW installed), has the most pronounced duck curve, and operates three investor-owned utilities with meaningfully different TOU rate structures. The top-line finding is that SDG&E territory offers the best risk-adjusted return, driven by the highest peak-to-off-peak price spread in the state ($0.68/kWh on the EV-TOU-5 plan), the strongest utility rebate program ($250/kWh upfront plus $0.10/kWh performance incentive), and significant grid congestion.</p>
+
+                    <h3>Revenue Mechanisms</h3>
+                    <p>Three durable revenue streams were evaluated for each utility territory:</p>
                     <ul>
-                        <li>Data Science for Energy: statistical methods and machine learning for energy forecasting</li>
-                        <li>Special Topics in Energy: understanding energy market structures and policy incentives</li>
-                        <li>Electric Transmission Systems: power flow analysis, capacity expansion, and grid reliability</li>
+                        <li><strong>TOU arbitrage:</strong> charge off-peak, discharge during the 4–9pm peak window. Expected annual savings of $300–$500/year per home in SDG&E territory. Certain to persist over long time horizons and unaffected by policy changes.</li>
+                        <li><strong>Utility rebate programs:</strong> SDG&E's battery rebate program offers $3,375 upfront per PowerWall plus $351/year in performance payments — roughly comparable to TOU returns but locked in for only five years. SOMAH provides up to $40k per PowerWall for qualifying low-income multi-family housing.</li>
+                        <li><strong>Demand Side Grid Support (DSGS):</strong> California's state reliability reserve pays for flexible capacity during summer peak hours. Payments are strong but program duration is uncertain.</li>
                     </ul>
 
-                    <h2>Technical Approach</h2>
-                    <p>The core of the model uses optimal power flow (OPF) formulations implemented in Julia's JuMP optimization framework, combined with Python-based data pipelines for ingesting and processing real-time ERCOT market data. The battery placement optimization considers factors including local load profiles, grid congestion patterns, and time-of-use pricing to identify locations where distributed storage provides the greatest value.</p>
+                    <h3>Target Segments</h3>
+                    <p>Using SunStrong's fleet data cross-referenced with utility territory, NEM enrollment status, inverter age, and zip-code level reliability data, four priority segments were identified:</p>
+                    <ul>
+                        <li><strong>SDG&E territory (13,245 systems):</strong> highest TOU spread and strongest rebate program; NEM 3.0 homes have the greatest savings potential with storage.</li>
+                        <li><strong>Reliability-challenged areas (2,244 systems):</strong> homes in High Fire-Threat Districts and circuits with frequent Public Safety Power Shutoffs; backup power value is high and SGIP equity/resiliency adders materially improve economics.</li>
+                        <li><strong>Inverter upgrade candidates (16,948 systems):</strong> arrays installed 2011–2016 approaching end-of-inverter life; bundling battery installation with a planned inverter replacement reduces incremental deployment cost significantly.</li>
+                        <li><strong>High-value customer areas:</strong> higher-income SDG&E households with elevated consumption and TOU exposure; low-income multi-family housing qualifying for SOMAH/SGIP stacking.</li>
+                    </ul>
 
-                    <h2>Industry Application</h2>
-                    <p>The model incorporates real-world data and constraints from work with SunStrong Management, which manages approximately 500,000 residential solar systems. Revenue streams analyzed include time-of-use arbitrage, demand response participation, capacity market revenues, and aggregated virtual power plant services.</p>
+                    <h3>Phased Business Strategy</h3>
+                    <p>The recommended deployment sequence is: (1) stack government subsidies — SOMAH and SGIP — on low-income and fire-risk homes for the largest immediate returns; (2) transition to utility rebate programs as state subsidies lapse; (3) rely on TOU arbitrage as the permanent, policy-independent baseline revenue; (4) pursue VPP aggregation once sufficient fleet battery capacity is installed. NEM 2.0 status should be preserved wherever possible, as those homes earn more from export and derive less benefit from added storage.</p>
                 </div>
 
                 <div class="project-detail-skills">
                     <ul>
                         <li>Python</li>
-                        <li>Julia</li>
-                        <li>JuMP</li>
+                        <li>CVXPY</li>
+                        <li>Convex Optimization</li>
                         <li>Optimal Power Flow</li>
-                        <li>Battery Optimization</li>
-                        <li>ERCOT Data</li>
-                        <li>Time-Series Forecasting</li>
+                        <li>LinDistFlow</li>
+                        <li>Battery Storage Modelling</li>
+                        <li>CAISO Market Data</li>
+                        <li>Financial Modelling</li>
+                        <li>Policy Research</li>
+                        <li>Power Systems</li>
                     </ul>
                 </div>
 

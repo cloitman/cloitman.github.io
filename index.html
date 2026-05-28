@@ -132,8 +132,8 @@
                     <h3>Key Projects</h3>
                     <div class="preview-grid">
                         <a class="project-preview" href="#projects" data-tab="tab-projects">
-                            <h5>Virtual Power Plant Model and Application</h5>
-                            <p>Optimal power flow &amp; battery placement using Python + Julia; application for SunStrong Management battery installations</p>
+                            <h5>Virtual Power Plant Research</h5>
+                            <p>Convex optimization (CVXPY) for battery allocation and arbitrage on IEEE feeder networks; deployment strategy for SunStrong Management's 500k-home residential solar fleet</p>
                             <span class="preview-tag">Featured &rarr;</span>
                         </a>
                         <!-- <a class="project-preview" href="#projects" data-tab="tab-projects">
@@ -313,12 +313,12 @@
                     <h3>Featured Project</h3>
                     <a href="projects/vpp.html" class="featured-project-link">
                         <div class="featured-project">
-                            <h4><i class="fa fa-bolt"></i> Virtual Power Plant (VPP) Model</h4>
-                            <p class="featured-subtitle">Combines Data Science for Energy, Special Topics in Energy, Electric Transmission Systems coursework + SunStrong VPP work</p>
+                            <h4><i class="fa fa-bolt"></i> Virtual Power Plant Research</h4>
+                            <p class="featured-subtitle">Battery allocation, arbitrage optimization, and residential storage deployment strategy &mdash; CEE295, ENERES 254, and SunStrong Management</p>
                             <p>
-                                Building a comprehensive virtual power plant model that integrates optimal power flow analysis with battery placement optimization for residential solar systems. The model uses Python and Julia to solve large-scale optimization problems across transmission networks, identifying optimal locations and sizing for distributed battery storage that maximizes revenue through energy arbitrage, demand response, and grid services. Incorporates GridStatus market data for price forecasting and monetization analysis.
+                                Two academic papers develop convex optimization (CVXPY) frameworks for battery siting and arbitrage profit maximization on a 13-node IEEE radial feeder, using real CAISO day-ahead market LMP data. A third project applies this work &mdash; alongside financial modeling and California policy research &mdash; to produce deployment recommendations for SunStrong Management, which leases approximately 500,000 residential solar systems. Key findings: battery siting converges to the most congested network node; optimal capacity saturates around 22&ndash;28 MWh; and SDG&E territory offers the best risk-adjusted returns for residential battery rollout.
                             </p>
-                            <span class="project-tags">Python &middot; Julia &middot; Optimal Power Flow &middot; Battery Optimization &middot; GridStatus Data</span>
+                            <span class="project-tags">Python &middot; CVXPY &middot; Optimal Power Flow &middot; Battery Storage &middot; CAISO Data &middot; Policy Research</span>
                         </div>
                     </a>
                 </div>
@@ -342,6 +342,15 @@
                                     <h4>Carbon Containment Lab</h4>
                                     <p>Building predictive model for methane emission detection from orphaned oil wells. Applying geospatial analysis and statistical modeling to prioritize well remediation.</p>
                                     <span class="project-tags">Python &middot; Geospatial &middot; Statistical Modeling</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="projects/ca-demand.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-info">
+                                    <h4>California Hourly Demand Forecasting</h4>
+                                    <p>ML-based disaggregation of California electricity demand using EIA, CAISO OASIS, and IEPR data. Forecasts feed an optimization model comparing the economics of new transmission infrastructure versus battery storage.</p>
+                                    <span class="project-tags">Python &middot; Machine Learning &middot; Julia &middot; Gurobi &middot; Capacity Expansion</span>
                                 </div>
                             </div>
                         </a>
@@ -418,7 +427,7 @@
                             <a href="projects/rf-scanner.html" class="project-card-link">
                                 <div class="project-card">
                                     <div class="project-card-image">
-                                        <img src="images/cubesat/cubesat.png" alt="Counterfeit RF Scanner">
+                                        <img src="images/rf-scanner/zCalib.jpg" alt="Counterfeit RF Scanner">
                                     </div>
                                     <div class="project-card-info">
                                         <h4>Counterfeit RF Scanner</h4>
