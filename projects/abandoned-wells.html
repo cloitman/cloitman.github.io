@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Orphaned Well ML &amp; Plugging Forecast - Charlie Loitman</title>
+    <link rel="shortcut icon" href="../battery.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="page-wrapper">
+        <aside id="sidebar">
+            <div class="sidebar-sticky">
+                <div class="sidebar-photo">
+                    <img src="../images/headshot.jpg" alt="Charlie Loitman">
+                </div>
+                <h1 class="sidebar-name"><a href="../index.html" style="color:#fff;text-decoration:none;">Charlie Loitman</a></h1>
+                <p class="sidebar-tagline">Mechanical Engineer. Quantitative Researcher. Power Systems.</p>
+                <div class="sidebar-info">
+                    <p><i class="fa fa-map-marker"></i> Berkeley, CA</p>
+                    <p><i class="fa fa-graduation-cap"></i> UC Berkeley MCS '26</p>
+                    <p><i class="fa fa-graduation-cap"></i> Yale BS '22</p>
+                </div>
+                <div class="sidebar-links">
+                    <a href="https://github.com/cloitman" target="_blank"><i class="fa fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+                </div>
+                <a href="../content/cloitmanResume2026.pdf" download class="sidebar-resume-btn">Download Resume</a>
+                <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+                    <i class="fa fa-moon-o"></i>
+                    <i class="fa fa-sun-o"></i>
+                </button>
+            </div>
+        </aside>
+
+        <div class="project-detail-wrapper">
+            <nav class="project-detail-nav">
+                <a href="../index.html#projects" class="back-btn"><i class="fa fa-arrow-left"></i> Back to Projects</a>
+            </nav>
+
+            <div class="project-detail">
+                <div class="project-detail-header">
+                    <h1>Machine Learning for Orphaned Well Detection &amp; Plugging Forecasts</h1>
+                    <p class="project-detail-subtitle">Lifecycle modeling across New Mexico's open oil and gas wells &mdash; which wells stop producing, which get plugged, and which are left leaking</p>
+                    <p class="project-detail-meta">January 2026 &ndash; September 2026 &bull; Carbon Containment Lab (Graduate Intern) &bull; <strong>Completed</strong></p>
+                </div>
+
+                <div class="project-detail-hero">
+                    <img src="../images/abandoned-wells/abandonedWell.jpg" alt="An orphaned oil well">
+                </div>
+
+                <div class="project-detail-body">
+                    <h2>Overview</h2>
+                    <p>Orphaned wells &mdash; oil and gas wells left unplugged after they stop producing &mdash; are a persistent source of methane, a greenhouse gas roughly eighty times more potent than CO<sub>2</sub> over a twenty-year horizon. Deciding which wells to plug first is a data problem: the states that carry the liability hold decades of production, injection, and permitting records, but no ranked list of what is actually finished.</p>
+                    <p>Over nine months as a graduate intern at the Carbon Containment Lab, I built a pipeline over the New Mexico Oil Conservation Division's full well registry &mdash; every record in the state, from permits through wells already sealed &mdash; to model how wells move through their lifecycle, predict which ones stop producing for good, and project how much of the resulting backlog will actually be plugged.</p>
+
+                    <h2>Predictive Modeling</h2>
+                    <p>Machine learning and statistical models over well-level production histories: decline-curve fits to characterize how each well is aging, classifiers for sporadic and intermittent production, water-cut prediction, and survivorship models for the transition from producing to idle to permanently stopped. Wells were banded by whole-year output into Above Marginal, Marginal, Very-Marginal, and Extra-Marginal groups, and each band's transition rates were measured directly from twenty-five years of records rather than assumed.</p>
+                    <p>A finding that shaped the final method: because so few wells are ever plugged, parsimonious models for predicting <em>plugging</em> disagree with one another and carry heavy assumptions while remaining only weakly predictive. Predicting which wells <em>stop producing</em> is tractable; predicting whether anyone then plugs them turns out not to be a property of the well at all. The delivered projection therefore applies observed empirical transition rates to today's fleet, and the appendix quantifies exactly how much each well-level trait adds &mdash; a negative result worth stating cleanly.</p>
+
+                    <h2>Geospatial Analysis</h2>
+                    <p>Spatial work tied wells to basin and district &mdash; the fleet splits between the Permian in the southeast and the San Juan in the northwest &mdash; tested true-vertical-depth neighborhoods, and examined fixed-lag relationships between injection wells and their neighbors' production, separating wells that are declining naturally from wells whose behavior is driven by nearby operations.</p>
+
+                    <h2>Key Findings</h2>
+                    <ul>
+                        <li><strong>Nearly two-thirds of producing wells are marginal or worse.</strong> Most of the state's producing wells fall below the conventional marginal threshold, and the weakest group averages a fraction of a barrel a day across the year &mdash; orders of magnitude below a healthy well.</li>
+                        <li><strong>Wells go quiet long before they are sealed.</strong> Half are plugged within a few years of last producing, but a large share are still open a decade later &mdash; and those are the years they leak.</li>
+                        <li><strong>Plugging roughly doubles over the next decade, and the backlog still does not clear.</strong> On historical rates, the population of wells that have stopped for good but remain unplugged ends the decade no smaller than it starts. Every well cleared is replaced by one that has just stopped.</li>
+                        <li><strong>The addressable population is 2.4x the official figure.</strong> Counting the intermittent wells that no idleness rule reaches &mdash; not just the wells the state formally flags &mdash; expands the population of wells that are finished in practice by a factor of <strong>2.4</strong>. That tier is where most of the methane sits.</li>
+                    </ul>
+
+                    <h2>Government Support</h2>
+                    <p>The work was delivered in September 2026 as a written fleet portrait with a companion technical appendix, prepared for the New Mexico Oil Conservation Division to inform regulation and the allocation of state plugging resources: which operators hold the weakest wells, which wells are inactive or non-compliant, and how the rule changes effective July 1, 2026 would show up in the data if they work as intended &mdash; as a rise in wells plugged shortly after they stop producing, rather than years later.</p>
+
+                    <h2>Royalty Model</h2>
+                    <p>Alongside the fleet analysis, I built an economic model for structuring royalty-based incentives to plug abandoned wells &mdash; exploring how payments to operators and landowners could be sized against plugging costs and remaining well value to make remediation self-sustaining rather than purely state-funded.</p>
+
+                    <h2>Stack</h2>
+                    <ul>
+                        <li>Python pipeline (scikit-learn, PyTorch, pandas) over the full OCD registry, production, injection, and plugging records, with scrapers for ongoing state data</li>
+                        <li>Decline-curve, survivorship, and cohort models; classification for sporadic production and water cut</li>
+                        <li>Geospatial analysis by basin, district, and depth neighborhood</li>
+                        <li>Empirical transition-rate projection over the coming decade, with sensitivity work in a companion appendix</li>
+                        <li>Reproducible figure and report generation &mdash; every number in the deliverable traces to a named output file</li>
+                    </ul>
+                </div>
+
+                <!-- GALLERY -->
+                <div class="project-detail-gallery">
+                    <h2>Gallery</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="../images/abandoned-wells/gas_lifecycle_acquisition_timing.png" alt="Gas well lifecycle by production and acquisition timing">
+                            <p class="gallery-caption">Gas well lifecycle, reflecting production and operator acquisitions</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="../images/abandoned-wells/top_risk_timelines.png" alt="Sporadic, marginal production timelines">
+                            <p class="gallery-caption">Sporadic, marginal production &mdash; wells kept nominally active to stay outside idle-well rules</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-detail-skills">
+                    <ul>
+                        <li>Python</li>
+                        <li>scikit-learn</li>
+                        <li>PyTorch</li>
+                        <li>Forecasting</li>
+                        <li>Geospatial Analysis</li>
+                        <li>Statistical Modeling</li>
+                        <li>Decline Curve Analysis</li>
+                        <li>Methane Detection</li>
+                        <li>Environmental Policy</li>
+                    </ul>
+                </div>
+
+                <div class="project-detail-back-bottom">
+                    <a href="../index.html#projects" class="back-btn"><i class="fa fa-arrow-left"></i> Back to Projects</a>
+                </div>
+            </div>
+
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 copyright">
+                            <p>Copyright &copy; <span id="copyright-year"></span> Charlie Loitman</p>
+                        </div>
+                        <div class="col-sm-2 top">
+                            <span id="to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-sm-5 social">
+                            <ul>
+                                <li><a href="https://github.com/cloitman/my_tools" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    (function() {
+        var body = document.body;
+        try { if (localStorage.getItem('darkMode') === 'true') body.classList.add('dark-mode'); } catch(e) {}
+        document.getElementById('dark-toggle').addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            try { localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'true' : 'false'); } catch(e) {}
+        });
+        document.getElementById('to-top').addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    })();
+    </script>
+</body>
+</html>

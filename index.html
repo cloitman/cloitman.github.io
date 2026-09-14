@@ -84,7 +84,7 @@
                         I'm a mechanical engineer and data scientist hoping to build the quantitative tools that power the energy transition. I hold a B.S. in Mechanical Engineering and a B.A. in Economics from Yale University, where I received the Lichty &amp; Waters Prize (the department's highest honor) and the Outstanding Undergraduate Achievement Award.
                     </p>
                     <p>
-                        I'm currently completing my Master's of Climate Solutions at UC Berkeley, where I focus on power systems, electrification, and data science. My work spans electric transmission system analysis, solar battery optimization against ERCOT market data, and methane detection from orphaned oil wells.
+                        I recently completed my Master's of Climate Solutions at UC Berkeley, where I focused on power systems, electrification, and data science. My work spans electric transmission system analysis and solar battery optimization against ERCOT market data. To apply data science to sustainability, I workedas a graduate intern at the Carbon Containment Lab, modelling the lifecycle of New Mexico's oil and gas wells to forecast plugging and locate the orphaned wells most likely to be leaking methane. I am now working on capacity expansion planning research to improve our growth of renewables and storage.
                     </p>
                     <p>
                         Before graduate school, I spent two years as a commodities and energy trader at Flow Traders in New York, where I systematized trading workflows &mdash; increasing volume 4x and profits 40% for the commodities desk &mdash; before co-creating the Centralized Execution Desk where I conducted research to optimize trading across asset classes. My interdisciplinary background connects rigorous engineering fundamentals with real-world energy systems, ML/data science, and power systems.
@@ -142,9 +142,9 @@
                             <span class="preview-tag">In Progress &rarr;</span>
                         </a> -->
                         <a class="project-preview" href="#projects" data-tab="tab-projects">
-                            <h5>Methane Detection</h5>
-                            <p>Predictive model for orphaned oil well emissions</p>
-                            <span class="preview-tag">In Progress &rarr;</span>
+                            <h5>Orphaned Well ML &amp; Plugging Forecast</h5>
+                            <p>Lifecycle modeling and plugging forecasts across New Mexico's oil and gas wells</p>
+                            <span class="preview-tag">Completed &rarr;</span>
                         </a>
                         <a class="project-preview" href="#projects" data-tab="tab-projects">
                             <h5>Flow Traders Product Design</h5>
@@ -182,7 +182,7 @@
                     <h3>Education</h3>
                     <div class="education-block">
                         <h4>University of California, Berkeley</h4>
-                        <span class="education-date">Aug 2025 &ndash; May 2026</span>
+                        <span class="education-date">Aug 2025 &ndash; August 2026</span>
                         <h5>Master's of Climate Solutions</h5>
                         <p>Coursework: Data Science for Energy, Energy and Environmental Markets, Electric Transmission Systems, Special Topics in Energy</p>
                     </div>
@@ -203,13 +203,24 @@
                 <div class="resume-section">
                     <h3>Experience</h3>
                     <div id="experience-timeline" class="resume-timeline">
-                        <div data-date="Jan 2026 &ndash; Present">
-                            <h3>Carbon Containment Lab</h3>
-                            <h4>Graduate Intern</h4>
+                        <div data-date="Apr 2026 &ndash; Present">
+                            <h3>Energy Modelling, Analysis, and Control Group</h3>
+                            <h4>Graduate Student Researcher &mdash; UC Berkeley</h4>
                             <ul>
-                                <li>Building predictive model for methane emission detection from orphaned oil wells</li>
-                                <li>Applying geospatial analysis and statistical modeling to prioritize well remediation</li>
-                                <li>Creating royalty model to incentivize plugging abandoned wells</li>
+                                <li>Disaggregating California energy demand for transmission expansion planning</li>
+                                <li>Projecting hourly substation-level demand through 2050 with scikit-learn, using public and proprietary data</li>
+                                <li>Applying Gurobi and Julia to evaluate new transmission against battery storage</li>
+                            </ul>
+                        </div>
+
+                        <div data-date="Jan 2026 &ndash; Sep 2026">
+                            <h3>Carbon Containment Lab</h3>
+                            <h4>Graduate Intern &mdash; New Haven, CT</h4>
+                            <ul>
+                                <li>Built predictive and lifecycle models over New Mexico's full well registry to identify orphaned wells most likely to be releasing methane</li>
+                                <li>Projected plugging and the stopped-but-unplugged backlog over the next decade, sizing the addressable population at 2.4x the state's official figure</li>
+                                <li>Applied geospatial analysis, decline-curve modeling, and production/injection analysis to prioritize well remediation</li>
+                                <li>Delivered a fleet portrait and technical appendix supporting New Mexico Oil Conservation Division regulation and resource allocation</li>
                             </ul>
                         </div>
 
@@ -308,21 +319,6 @@
             <!-- ===================== TAB 3: PROJECTS ===================== -->
             <div id="tab-projects" class="tab-content">
 
-                <!-- Featured Project -->
-                <div class="project-category">
-                    <h3>Featured Project</h3>
-                    <a href="projects/vpp.html" class="featured-project-link">
-                        <div class="featured-project">
-                            <h4><i class="fa fa-bolt"></i> Virtual Power Plant Research</h4>
-                            <p class="featured-subtitle">Battery allocation, arbitrage optimization, and residential storage deployment strategy &mdash; CEE295, ENERES 254, and SunStrong Management</p>
-                            <p>
-                                Two academic papers develop convex optimization (CVXPY) frameworks for battery siting and arbitrage profit maximization on a 13-node IEEE radial feeder, using real CAISO day-ahead market LMP data. A third project applies this work &mdash; alongside financial modeling and California policy research &mdash; to produce deployment recommendations for SunStrong Management, which leases approximately 500,000 residential solar systems. Key findings: battery siting converges to the most congested network node; optimal capacity saturates around 22&ndash;28 MWh; and SDG&E territory offers the best risk-adjusted returns for residential battery rollout.
-                            </p>
-                            <span class="project-tags">Python &middot; CVXPY &middot; Optimal Power Flow &middot; Battery Storage &middot; CAISO Data &middot; Policy Research</span>
-                        </div>
-                    </a>
-                </div>
-
                 <!-- In-Progress Projects -->
                 <div class="project-category">
                     <h3>In Progress</h3>
@@ -336,15 +332,6 @@
                                 </div>
                             </div>
                         </a> -->
-                        <a href="projects/carbon-containment.html" class="project-card-link">
-                            <div class="project-card">
-                                <div class="project-card-info">
-                                    <h4>Carbon Containment Lab</h4>
-                                    <p>Building predictive model for methane emission detection from orphaned oil wells. Applying geospatial analysis and statistical modeling to prioritize well remediation.</p>
-                                    <span class="project-tags">Python &middot; Geospatial &middot; Statistical Modeling</span>
-                                </div>
-                            </div>
-                        </a>
                         <a href="projects/ca-demand.html" class="project-card-link">
                             <div class="project-card">
                                 <div class="project-card-info">
@@ -366,10 +353,38 @@
                     </div>
                 </div>
 
+
+                <!-- Featured Project -->
+                <div class="project-category">
+                    <h3>Featured Project</h3>
+                    <a href="projects/vpp.html" class="featured-project-link">
+                        <div class="featured-project">
+                            <h4><i class="fa fa-bolt"></i> Virtual Power Plant Research</h4>
+                            <p class="featured-subtitle">Battery allocation, arbitrage optimization, and residential storage deployment strategy &mdash; CEE295, ENERES 254, and SunStrong Management</p>
+                            <p>
+                                Two academic papers develop convex optimization (CVXPY) frameworks for battery siting and arbitrage profit maximization on a 13-node IEEE radial feeder, using real CAISO day-ahead market LMP data. A third project applies this work &mdash; alongside financial modeling and California policy research &mdash; to produce deployment recommendations for SunStrong Management, which leases approximately 500,000 residential solar systems. Key findings: battery siting converges to the most congested network node; optimal capacity saturates around 22&ndash;28 MWh; and SDG&E territory offers the best risk-adjusted returns for residential battery rollout.
+                            </p>
+                            <span class="project-tags">Python &middot; CVXPY &middot; Optimal Power Flow &middot; Battery Storage &middot; CAISO Data &middot; Policy Research</span>
+                        </div>
+                    </a>
+                </div>
+
                 <!-- Completed Projects -->
                 <div class="project-category">
                     <h3>Completed</h3>
                     <div class="projects-grid">
+                        <a href="projects/abandoned-wells.html" class="project-card-link">
+                            <div class="project-card">
+                                <div class="project-card-image">
+                                    <img src="images/abandoned-wells/abandonedWell.jpg" alt="Orphaned oil well">
+                                </div>
+                                <div class="project-card-info">
+                                    <h4>Orphaned Well ML &amp; Plugging Forecast</h4>
+                                    <p>Machine learning and lifecycle modeling across New Mexico's open oil and gas wells &mdash; predicting which wells stop producing, forecasting plugging over the next decade, and sizing the orphaned-well backlog at 2.4x the state's official figure. Graduate intern deliverable for the Carbon Containment Lab.</p>
+                                    <span class="project-tags">Python &middot; Machine Learning &middot; Forecasting &middot; Geospatial &middot; Statistical Modeling</span>
+                                </div>
+                            </div>
+                        </a>
                         <a href="projects/flow-traders.html" class="project-card-link">
                             <div class="project-card">
                                 <div class="project-card-image">
@@ -513,7 +528,8 @@
                         <div class="about-intro">
                             <h2>About Me</h2>
                             <p>I'm a mechanical engineer and quantitative researcher focused on energy systems and the clean energy transition. I combine engineering fundamentals with data science and machine learning to tackle challenges in power systems, renewable energy, and grid optimization.</p>
-                            <p>Currently pursuing a Master's of Climate Solutions at UC Berkeley, I previously studied mechanical engineering at Yale where I conducted materials science research and gained experience in quantitative finance.</p>
+                            <p>Recently finished a Master's of Climate Solutions at UC Berkeley, I previously studied mechanical engineering at Yale where I conducted materials science research and gained experience in quantitative finance.</p>
+                            <p>Now, I am uniting my interests in data science, engineering, and sustainability by studying power systems as a member of the Energy Modelling and Controls Lab at UC Berkeley. I hope to contribute to novel VPPs, improve distributed energy resources, and ensure the stability of our power grid.</p>
                         </div>
                     </div>
 
@@ -525,11 +541,11 @@
                         <br><br>
                         Hoping to learn about the incentives that allow the proliferation of fossil fuels, I decided to take a game theory class. I loved the mathematical modelling aspects of the subject and decided to add an economics degree where I also studied resource economics. During COVID, an economics professor invited me to work at his hedge fund where I applied my data science background to optimization algorithms for options pricing.
                         <br><br>
-                        Still passionate about energy but with an interest in quantitative research methods I learned at the hedge fund, I decided to trade commodities at Flow Traders. I had success building out energy trading frameworks and I even built out the firm’s first carbon credit trading strategies. Nonetheless, I wanted more environmental impact with my work and closer application of engineering principles, so I returned to school at UC Berkeley. Now, I am uniting my interests in data science, engineering, and sustainability by studying power systems. I hope to contribute to novel VPPs, improve distributed energy resources, and ensure the stability of our power grid.
+                        Still passionate about energy but with an interest in quantitative research methods I learned at the hedge fund, I decided to trade commodities at Flow Traders. I had success building out energy trading frameworks and I even built out the firm’s first carbon credit trading strategies. Nonetheless, I wanted more environmental impact with my work and closer application of engineering principles, so I returned to school at UC Berkeley. Through my coursework, I have developed an expertise in power systems modelling and markets which I will apply to improve the efficiency and profitability of renewables.
                         </p>
 
                         <h2>What I'm Working On</h2>
-                        <p>I’m currently interested in the application of storage and controls to develop virtual power plants. Through classes and an independent study, I am getting to create a very simplified model to help a solar leasing company branch into the battery business, which is allowing me to improve my power flow modelling and optimization skills.</p>
+                        <p>I’m currently interested in the application of storage and controls to develop virtual power plants. I am completing a paper now for publication on capacity expansion model refinement. Stay tuned for a pre-print.</p>
 
                         <h2>Hobbies</h2>
                         <div class="about-interests">
