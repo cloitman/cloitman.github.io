@@ -797,6 +797,12 @@ body.dark-mode .vtimeline-content h3 { color: #e0e0f0; }
         height: 100%;
         object-fit: cover;
     }
+
+    // Square logos: show the whole mark on its own background
+    &.logo-fit {
+        background: #110a39;
+        img { object-fit: contain; }
+    }
 }
 
 .project-card-info {
@@ -1308,6 +1314,9 @@ footer {
     .sidebar-sticky { padding: 16px; }
     .sidebar-photo { width: 60px; height: 60px; }
     .sidebar-name { font-size: 1em; }
+
+    .tab-nav { padding: 0 8px; }
+    .tab-nav-btn { padding: 14px 10px; }
 
     .preview-grid { grid-template-columns: 1fr; }
 
