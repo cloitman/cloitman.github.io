@@ -117,29 +117,31 @@
                     <p class="project-detail-meta" style="margin-bottom:0.75rem;">CEE295: Data Science for Energy &bull; UC Berkeley &bull; May 2026</p>
                     <a href="https://github.com/ThibaudCambronne/vpp-controller" target="_blank" class="project-github-link"><i class="fa fa-github"></i> &nbsp;ThibaudCambronne/vpp-controller</a>
 
-                    <p>This project asks how a social planner should allocate a fixed budget of battery storage across the buses of a small distribution network to minimize thermal generation costs and expand the effective demand frontier. The setting is a 13-node radial feeder with a single generation source, duck-curve demand profiles derived from PG&E load data, and time-varying generation costs drawn from CAISO Day-Ahead Market Locational Marginal Prices (LMPs).</p>
+                    <p>This project asks how a social planner should allocate a fixed budget of battery storage across the buses of a small distribution network to minimize thermal generation costs and expand the effective demand frontier. The setting is a 13-node radial feeder with a single generation source, hourly PG&E-area demand, and duck-curve generation costs drawn from CAISO Day-Ahead Market Locational Marginal Prices (LMPs).</p>
 
-                    <p>We formulate a convex optimization problem using LinDistFlow power flow constraints and battery state-of-charge dynamics, with a penalty on curtailed demand that captures the price elasticity of electricity. The objective minimizes generation cost while penalizing unserved load, so the solver jointly optimizes battery sizing, siting, and hourly dispatch across a full 24-hour operating day for each of four seasonal scenarios.</p>
+                    <p><em>My contributions: co-developed the model formulation, built the test feeder and network data, rewrote the optimization model from a simpler LinDistFlow formulation, ran the seasonal sweeps, and produced the figures.</em></p>
+
+                    <p>We formulate a convex optimization problem using the DistFlow branch-flow model with line losses (a convex second-order-cone relaxation) and battery state-of-charge dynamics, with a penalty on curtailed demand that captures the price elasticity of electricity. The objective minimizes generation cost while penalizing unserved load, so the solver jointly optimizes battery sizing, siting, and hourly dispatch across a full 24-hour operating day for each of four seasonal scenarios.</p>
 
                     <figure class="project-figure">
-                        <img src="../images/vpp/ieee13busSystem.png" alt="13-node IEEE radial test feeder used for optimization">
+                        <a href="../images/vpp/ieee13busSystem.png" target="_blank" rel="noopener"><img src="../images/vpp/ieee13busSystem.png" alt="13-node IEEE radial test feeder used for optimization"></a>
                         <figcaption>The 13-node radial distribution network used as the basis for both optimization models. Node 0 is the generation source; all other nodes carry load.</figcaption>
                     </figure>
 
-                    <p>The spring scenario — where the duck curve is most pronounced and midday generation prices go negative — yields the largest benefit from storage. The optimal total capacity lies between 22 and 28 MWh, with marginal grid benefit flattening above roughly 30 MWh. Across all budget scenarios, battery siting converges decisively to node 1, which sits immediately downstream of the generation source and serves as the hub through which all downstream load is served. Placing storage at this single bottleneck node eliminates the primary source of line losses and provides the greatest system-wide benefit.</p>
+                    <p>The spring scenario — where the duck curve is most pronounced and midday generation prices go negative — yields the largest benefit from storage. The benefit of added storage levels off at around 30 MWh. Across all budget scenarios, battery siting converges decisively to node 1, which sits immediately downstream of the generation source and serves as the hub through which all downstream load is served. Placing storage at this single bottleneck node eliminates the primary source of line losses and provides the greatest system-wide benefit.</p>
 
                     <figure class="project-figure">
-                        <img src="../images/vpp/Grid Economic Expansion/slack_3d_cap8MWh.png" alt="3D battery dispatch across all nodes and hours at 8 MWh capacity">
-                        <figcaption>3D dispatch visualization at 8 MWh total capacity. Charging (negative) occurs during midday negative-price hours; discharging (positive) into the evening ramp captures the full duck-curve spread.</figcaption>
+                        <a href="../images/vpp/Grid Economic Expansion/slack_3d_cap8MWh.png" target="_blank" rel="noopener"><img src="../images/vpp/Grid Economic Expansion/slack_3d_cap8MWh.png" alt="Load adjustment by node and hour at 8 MWh of storage"></a>
+                        <figcaption>Load adjustment by node and hour at 8 MWh of storage, which tracks battery charging and discharging across the duck-curve price spread.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <img src="../images/vpp/Grid Economic Expansion/node_12_dispatch_by_capacity.png" alt="Battery dispatch at node 12 across capacity scenarios">
+                        <a href="../images/vpp/Grid Economic Expansion/node_12_dispatch_by_capacity.png" target="_blank" rel="noopener"><img src="../images/vpp/Grid Economic Expansion/node_12_dispatch_by_capacity.png" alt="Battery dispatch at node 12 across capacity scenarios"></a>
                         <figcaption>Dispatch behavior at node 12 for increasing capacity budgets. Secondary nodes receive meaningful allocation only after the central node 1 reaches its capacity limit.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <img src="../images/vpp/Grid Economic Expansion/node_profit_by_capacity.png" alt="Node profit by total battery capacity">
+                        <a href="../images/vpp/Grid Economic Expansion/node_profit_by_capacity.png" target="_blank" rel="noopener"><img src="../images/vpp/Grid Economic Expansion/node_profit_by_capacity.png" alt="Node profit by total battery capacity"></a>
                         <figcaption>Grid cost savings attributable to each node as total installed capacity grows. Node 1 dominates at every budget level; profit growth at secondary nodes only begins once node 1 saturates.</figcaption>
                     </figure>
 
@@ -147,34 +149,44 @@
 
                     <!-- ========== PROJECT 2: ENERES 254 ========== -->
                     <h2>Battery Arbitrage Optimization Across a Feeder</h2>
-                    <p class="project-detail-meta" style="margin-bottom:0.75rem;">ENERES 254: Electric Transmission Systems &bull; UC Berkeley &bull; April 2026</p>
+                    <p class="project-detail-meta" style="margin-bottom:0.75rem;">ENERES 254: Electric Power Systems &bull; UC Berkeley &bull; May 2026</p>
                     <a href="https://github.com/cloitman/vpp-controller-arb" target="_blank" class="project-github-link"><i class="fa fa-github"></i> &nbsp;cloitman/vpp-controller-arb</a>
 
                     <p>This companion project reframes the battery allocation problem from the perspective of profit-maximizing asset managers rather than a social planner. In the context of real-world VPP operation — motivated directly by SunStrong Management's decision of which households to prioritize for battery installation — asset managers want to maximize arbitrage revenue from time-of-use price spreads, not minimize total system cost.</p>
 
-                    <p>We implement a two-stage CVXPY optimization. Stage 1 solves the standard OPF without batteries to extract Locational Marginal Prices (LMPs) as dual variables on the power balance constraint — these serve as the naïve price signal that battery operators observe. Stage 2 maximizes battery arbitrage profits against those LMPs using LinDistFlow and full battery constraints (charge/discharge efficiency, SOC dynamics, daily cycle constraint, total capacity budget). This two-stage design models the realistic setting where individual operators treat prices as fixed and do not internalize their aggregate impact on congestion.</p>
+                    <p>We implement a two-stage CVXPY optimization. Stage 1 solves the standard OPF without batteries to extract Locational Marginal Prices (LMPs) as dual variables on the power balance constraint — these serve as the naïve price signal that battery operators observe. Stage 2 maximizes battery arbitrage profits against those LMPs using the same DistFlow model with line losses and full battery constraints (charge/discharge efficiency, SOC dynamics, daily cycle constraint, total capacity budget). This two-stage design models the realistic setting where individual operators treat prices as fixed and do not internalize their aggregate impact on congestion.</p>
 
                     <figure class="project-figure">
-                        <img src="../images/vpp/Arbitrage/node_2_dispatch_and_lmp.png" alt="Battery dispatch and LMP at node 2">
+                        <a href="../images/vpp/Arbitrage/input_lmp_heatmap.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/input_lmp_heatmap.png" alt="Stage 1 locational marginal prices by node and hour"></a>
+                        <figcaption>Stage 1 locational marginal prices by node and hour: the fixed price signal the battery operators optimize against. Midday prices fall to around zero or below, and the evening peak sets the arbitrage spread.</figcaption>
+                    </figure>
+
+                    <figure class="project-figure">
+                        <a href="../images/vpp/Arbitrage/node_2_dispatch_and_lmp.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/node_2_dispatch_and_lmp.png" alt="Battery dispatch and LMP at node 2"></a>
                         <figcaption>Battery dispatch (charge/discharge) overlaid with the LMP price signal at node 2. Batteries charge aggressively during the midday price trough and discharge into the evening peak, confirming textbook duck-curve arbitrage behavior.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <img src="../images/vpp/Arbitrage/battery_dispatch_3d_cap26MWh.png" alt="3D battery dispatch at optimal 26 MWh capacity">
-                        <figcaption>Full 3D dispatch across all 13 nodes and 24 hours at the optimal 26 MWh installed capacity. Capacity concentrates at nodes near cheap generation or with high local LMPs; dispatch timing is consistent across nodes.</figcaption>
+                        <a href="../images/vpp/Arbitrage/battery_dispatch_3d_cap26MWh.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/battery_dispatch_3d_cap26MWh.png" alt="3D battery dispatch at 26 MWh capacity"></a>
+                        <figcaption>Full 3D dispatch across all 13 nodes and 24 hours at 26 MWh, the largest budget tested. Capacity concentrates at nodes near cheap generation or with high local LMPs; dispatch timing is consistent across nodes.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <img src="../images/vpp/Arbitrage/capacity_allocation_by_node.png" alt="Fraction of total battery capacity allocated to each node">
-                        <figcaption>Battery capacity allocation by node across all budget scenarios (2–26 MWh). Node 1 absorbs 75–100% of capacity at every budget level, reflecting its position at the network's only significant bottleneck.</figcaption>
+                        <a href="../images/vpp/Arbitrage/capacity_allocation_by_node.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/capacity_allocation_by_node.png" alt="Fraction of total battery capacity allocated to each node"></a>
+                        <figcaption>Battery capacity allocation by node across all budget scenarios (2–26 MWh). Capacity spreads across nodes 2, 3, 9 and 12, near the cheaper generators; node 1 receives under 10%.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <img src="../images/vpp/Arbitrage/node_profit_by_capacity.png" alt="Arbitrage profit by node and capacity scenario">
-                        <figcaption>Arbitrage profit earned per node across capacity scenarios. Profits are concentrated at nodes 2, 3, 7, 9, and 12. Node 1 earns more than an order of magnitude more profit than most other nodes due to its dominant capacity share.</figcaption>
+                        <a href="../images/vpp/Arbitrage/node_profit_by_capacity.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/node_profit_by_capacity.png" alt="Arbitrage profit by node and capacity scenario"></a>
+                        <figcaption>Arbitrage profit earned per node across capacity scenarios. Profits are concentrated at nodes 2, 3, 7, 9, and 12. Node 9 leads at the largest budgets.</figcaption>
                     </figure>
 
-                    <p>Key findings: battery siting converges to low-cost generating nodes and highly connected network hubs; dispatch profiles confirm duck-curve arbitrage independent of capacity; and profit growth flattens above 22 MWh as the feeder's physical limits (line thermal limits, voltage bounds, and generation capacity) begin to bind. Because Stage 2 holds the Stage 1 prices fixed, the model does not capture the price compression a fleet this size would cause in practice, so these profits are an upper bound. The highest-value siting location in any radial network is the node immediately downstream of the most congested line — identifying this in a real network requires a congestion map and shadow price analysis.</p>
+                    <figure class="project-figure">
+                        <a href="../images/vpp/Arbitrage/objective_vs_capacity.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/objective_vs_capacity.png" alt="Total and marginal arbitrage profit by capacity budget"></a>
+                        <figcaption>Total arbitrage profit (line) and marginal profit per added MWh (bars) by capacity budget. Marginal profit falls from about $58/MWh to about $10/MWh, so profit flattens above about 22 MWh.</figcaption>
+                    </figure>
+
+                    <p>Key findings: battery siting converges to low-cost generating nodes and highly connected network hubs; dispatch profiles confirm duck-curve arbitrage independent of capacity; and profit growth flattens above 22 MWh as the feeder's physical limits (line thermal limits, voltage bounds, and generation capacity) begin to bind. Because Stage 2 holds the Stage 1 prices fixed, the model does not capture the price compression a fleet this size would cause in practice, so these profits are an upper bound. In radial networks like this one, the highest-value siting location is the node immediately downstream of the most congested line — identifying this in a real network requires a congestion map and shadow price analysis.</p>
 
                     <hr class="project-section-divider">
 
@@ -213,7 +225,7 @@
                         <li>CVXPY</li>
                         <li>Convex Optimization</li>
                         <li>Optimal Power Flow</li>
-                        <li>LinDistFlow</li>
+                        <li>DistFlow (SOCP)</li>
                         <li>Battery Storage Modelling</li>
                         <li>CAISO Market Data</li>
                         <li>Financial Modelling</li>
@@ -238,7 +250,7 @@
                         </div>
                         <div class="col-sm-5 social">
                             <ul>
-                                <li><a href="https://github.com/cloitman/my_tools" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://github.com/cloitman" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
                                 <li><a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                 <li><a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                             </ul>
