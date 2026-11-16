@@ -124,24 +124,24 @@
                     <p>We formulate a convex optimization problem using the DistFlow branch-flow model with line losses (a convex second-order-cone relaxation) and battery state-of-charge dynamics, with a penalty on curtailed demand that captures the price elasticity of electricity. The objective minimizes generation cost while penalizing unserved load, so the solver jointly optimizes battery sizing, siting, and hourly dispatch across a full 24-hour operating day for each of four seasonal scenarios.</p>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/ieee13busSystem.png" target="_blank" rel="noopener"><img src="../images/vpp/ieee13busSystem.png" alt="13-node IEEE radial test feeder used for optimization"></a>
+                        <img src="../images/vpp/ieee13busSystem.png" alt="13-node IEEE radial test feeder used for optimization">
                         <figcaption>The 13-node radial distribution network used as the basis for both optimization models. Node 0 is the generation source; all other nodes carry load.</figcaption>
                     </figure>
 
                     <p>The spring scenario — where the duck curve is most pronounced and midday generation prices go negative — yields the largest benefit from storage. The benefit of added storage levels off at around 30 MWh. Across all budget scenarios, battery siting converges decisively to node 1, which sits immediately downstream of the generation source and serves as the hub through which all downstream load is served. Placing storage at this single bottleneck node eliminates the primary source of line losses and provides the greatest system-wide benefit.</p>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Grid Economic Expansion/slack_3d_cap8MWh.png" target="_blank" rel="noopener"><img src="../images/vpp/Grid Economic Expansion/slack_3d_cap8MWh.png" alt="Load adjustment by node and hour at 8 MWh of storage"></a>
+                        <img src="../images/vpp/Grid Economic Expansion/slack_3d_cap8MWh.png" alt="Load adjustment by node and hour at 8 MWh of storage">
                         <figcaption>Load adjustment by node and hour at 8 MWh of storage, which tracks battery charging and discharging across the duck-curve price spread.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Grid Economic Expansion/node_12_dispatch_by_capacity.png" target="_blank" rel="noopener"><img src="../images/vpp/Grid Economic Expansion/node_12_dispatch_by_capacity.png" alt="Battery dispatch at node 12 across capacity scenarios"></a>
+                        <img src="../images/vpp/Grid Economic Expansion/node_12_dispatch_by_capacity.png" alt="Battery dispatch at node 12 across capacity scenarios">
                         <figcaption>Dispatch behavior at node 12 for increasing capacity budgets. Secondary nodes receive meaningful allocation only after the central node 1 reaches its capacity limit.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Grid Economic Expansion/node_profit_by_capacity.png" target="_blank" rel="noopener"><img src="../images/vpp/Grid Economic Expansion/node_profit_by_capacity.png" alt="Node profit by total battery capacity"></a>
+                        <img src="../images/vpp/Grid Economic Expansion/node_profit_by_capacity.png" alt="Node profit by total battery capacity">
                         <figcaption>Grid cost savings attributable to each node as total installed capacity grows. Node 1 dominates at every budget level; profit growth at secondary nodes only begins once node 1 saturates.</figcaption>
                     </figure>
 
@@ -157,32 +157,32 @@
                     <p>We implement a two-stage CVXPY optimization. Stage 1 solves the standard OPF without batteries to extract Locational Marginal Prices (LMPs) as dual variables on the power balance constraint — these serve as the naïve price signal that battery operators observe. Stage 2 maximizes battery arbitrage profits against those LMPs using the same DistFlow model with line losses and full battery constraints (charge/discharge efficiency, SOC dynamics, daily cycle constraint, total capacity budget). This two-stage design models the realistic setting where individual operators treat prices as fixed and do not internalize their aggregate impact on congestion.</p>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Arbitrage/input_lmp_heatmap.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/input_lmp_heatmap.png" alt="Stage 1 locational marginal prices by node and hour"></a>
+                        <img src="../images/vpp/Arbitrage/input_lmp_heatmap.png" alt="Stage 1 locational marginal prices by node and hour">
                         <figcaption>Stage 1 locational marginal prices by node and hour: the fixed price signal the battery operators optimize against. Midday prices fall to around zero or below, and the evening peak sets the arbitrage spread.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Arbitrage/node_2_dispatch_and_lmp.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/node_2_dispatch_and_lmp.png" alt="Battery dispatch and LMP at node 2"></a>
+                        <img src="../images/vpp/Arbitrage/node_2_dispatch_and_lmp.png" alt="Battery dispatch and LMP at node 2">
                         <figcaption>Battery dispatch (charge/discharge) overlaid with the LMP price signal at node 2. Batteries charge aggressively during the midday price trough and discharge into the evening peak, confirming textbook duck-curve arbitrage behavior.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Arbitrage/battery_dispatch_3d_cap26MWh.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/battery_dispatch_3d_cap26MWh.png" alt="3D battery dispatch at 26 MWh capacity"></a>
+                        <img src="../images/vpp/Arbitrage/battery_dispatch_3d_cap26MWh.png" alt="3D battery dispatch at 26 MWh capacity">
                         <figcaption>Full 3D dispatch across all 13 nodes and 24 hours at 26 MWh, the largest budget tested. Capacity concentrates at nodes near cheap generation or with high local LMPs; dispatch timing is consistent across nodes.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Arbitrage/capacity_allocation_by_node.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/capacity_allocation_by_node.png" alt="Fraction of total battery capacity allocated to each node"></a>
+                        <img src="../images/vpp/Arbitrage/capacity_allocation_by_node.png" alt="Fraction of total battery capacity allocated to each node">
                         <figcaption>Battery capacity allocation by node across all budget scenarios (2–26 MWh). Capacity spreads across nodes 2, 3, 9 and 12, near the cheaper generators; node 1 receives under 10%.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Arbitrage/node_profit_by_capacity.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/node_profit_by_capacity.png" alt="Arbitrage profit by node and capacity scenario"></a>
+                        <img src="../images/vpp/Arbitrage/node_profit_by_capacity.png" alt="Arbitrage profit by node and capacity scenario">
                         <figcaption>Arbitrage profit earned per node across capacity scenarios. Profits are concentrated at nodes 2, 3, 7, 9, and 12. Node 9 leads at the largest budgets.</figcaption>
                     </figure>
 
                     <figure class="project-figure">
-                        <a href="../images/vpp/Arbitrage/objective_vs_capacity.png" target="_blank" rel="noopener"><img src="../images/vpp/Arbitrage/objective_vs_capacity.png" alt="Total and marginal arbitrage profit by capacity budget"></a>
+                        <img src="../images/vpp/Arbitrage/objective_vs_capacity.png" alt="Total and marginal arbitrage profit by capacity budget">
                         <figcaption>Total arbitrage profit (line) and marginal profit per added MWh (bars) by capacity budget. Marginal profit falls from about $58/MWh to about $10/MWh, so profit flattens above about 22 MWh.</figcaption>
                     </figure>
 
