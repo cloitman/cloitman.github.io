@@ -48,7 +48,7 @@
                 <div class="project-detail-header">
                     <h1>Counterfeit RF Scanner</h1>
                     <p class="project-detail-subtitle">Modified 3D printer to analyze electronic parts for defects</p>
-                    <p class="project-detail-meta"><strong>Setting:</strong> August 2021 - May 2022; Computer Architecture and Security Lab, Yale University</p>
+                    <p class="project-detail-meta"><strong>Setting:</strong> August 2021 - May 2022; Computer Architecture and Security Lab, Yale University; Advisor: Jakub Szefer</p>
                 </div>
 
                 <!-- HERO IMAGE -->
@@ -72,35 +72,35 @@
                     </ul>
 
                     <h2>Solution</h2>
-                    <p>To replace expensive robotic arms in traditional counterfeit scanners, I modified a 3D printer by replacing the extruder with a 3D printed head for both a distance sensor and Hall effect probe to measure magnetic field. These parts were controlled using a RaspberryPi that was controlled by an extensive and modular coding library that I wrote.</p>
+                    <p>To replace expensive robotic arms in traditional counterfeit scanners, I modified a 3D printer by replacing the extruder with a 3D printed head for both a distance sensor and near-field probe to measure magnetic field. These parts were controlled using a RaspberryPi that was controlled by an extensive and modular coding library that I wrote.</p>
 
                     <p>With the mount, I modified a RaspberryPi to control the 3D printer mount and connected probes. The printer would run a snake path over the surface of the printer bed with a distance sensor to create a topographic map of the part.</p>
 
-                    <p>Using this data, the code would create a custom Gcode map that instructed the printer how close to bring the Hall effect probe to the surface of the part for best radiation readings.</p>
+                    <p>Using this data, the code would create a custom Gcode map that instructed the printer how close to bring the near-field probe to the surface of the part for best radiation readings.</p>
 
                     <h2>Result</h2>
-                    <p>The system in total cost $350, far less than the >$10k existing models, but the data is quite noisy. The topographic map needed refinement to move the Hall effect probe closer and when doing RF scanning, an insulating shield needs to be refined. In total, this was an effective proof-of-concept prepared for open-sourcing for labs around the country. The machine was designed with modularity to make easy substitutions with alternate probes and printers.</p>
+                    <p>The system in total cost $350, far less than the >$10k existing models, but the data is quite noisy. The topographic map needed refinement to move the near-field probe closer and when doing RF scanning, an insulating shield needs to be refined. In total, this was an effective proof-of-concept prepared for open-sourcing for labs around the country. The machine was designed with modularity to make easy substitutions with alternate probes and printers.</p>
                 </div>
                 <div class="project-detail-gallery">
                     <div class="gallery-grid">
                         <div class="gallery-item">
-                            <img src="../images/rf-scanner/bestTopographicMap.png" alt="Best topographic map">
+                            <a href="../images/rf-scanner/bestTopographicMap.png" target="_blank" rel="noopener"><img src="../images/rf-scanner/bestTopographicMap.png" alt="Best topographic map"></a>
                             <div class="gallery-caption">Best topographic map</div>
                         </div>
                         <div class="gallery-item">
-                            <img src="../images/rf-scanner/HeightDetector2.jpg" alt="Height detector with Hall effect probe">
-                            <div class="gallery-caption">Height detector with Hall effect probe</div>
+                            <a href="../images/rf-scanner/HeightDetector2.jpg" target="_blank" rel="noopener"><img src="../images/rf-scanner/HeightDetector2.jpg" alt="Height detector with near-field probe"></a>
+                            <div class="gallery-caption">Height detector with near-field probe</div>
                         </div>
                         <div class="gallery-item">
-                            <img src="../images/rf-scanner/probeMount2.jpg" alt="Probe Mount for sensor">
+                            <a href="../images/rf-scanner/probeMount2.jpg" target="_blank" rel="noopener"><img src="../images/rf-scanner/probeMount2.jpg" alt="Probe Mount for sensor"></a>
                             <div class="gallery-caption">Probe Mount for sensor</div>
                         </div>
                         <div class="gallery-item">
-                            <img src="../images/rf-scanner/zCalib.jpg" alt="z-axis calibration">
+                            <a href="../images/rf-scanner/zCalib.jpg" target="_blank" rel="noopener"><img src="../images/rf-scanner/zCalib.jpg" alt="z-axis calibration"></a>
                             <div class="gallery-caption">z-axis calibration</div>
                         </div>
                         <div class="gallery-item">
-                            <img src="../images/rf-scanner/topographicMap50.jpg" alt="Topographic map">
+                            <a href="../images/rf-scanner/topographicMap50.jpg" target="_blank" rel="noopener"><img src="../images/rf-scanner/topographicMap50.jpg" alt="Topographic map"></a>
                             <div class="gallery-caption">Topographic map</div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="col-sm-5 social">
                             <ul>
-                                <li><a href="https://github.com/cloitman/my_tools" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://github.com/cloitman" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
                                 <li><a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                 <li><a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                             </ul>

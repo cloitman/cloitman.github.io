@@ -46,8 +46,8 @@
             <div class="project-detail">
                 <div class="project-detail-header">
                     <h1>Downscaling California Load for Capacity Expansion</h1>
-                    <p class="project-detail-subtitle">Downscaling long-term load projections to hourly, nodal demand to study transmission and storage investment</p>
-                    <p class="project-detail-meta">May 2026 &ndash; August 2026 &bull; Energy Modelling, Analysis, and Control Group, UC Berkeley</p>
+                    <p class="project-detail-subtitle">Placing statewide load projections at real substations and on the buses of a nodal California grid model</p>
+                    <p class="project-detail-meta">May 2026 &ndash; Present &bull; Energy Modeling, Analysis, and Control Group, UC Berkeley</p>
                 </div>
 
                 <div class="project-detail-hero">
@@ -56,39 +56,39 @@
 
                 <div class="project-detail-body">
                     <h2>Overview</h2>
-                    <p>California's grid operators need accurate, granular forecasts of electricity demand to make good infrastructure decisions &mdash; where to build new transmission lines, how much battery storage to deploy, and how much to spend on each. This project builds an hourly demand disaggregation model for California, using machine learning trained on public data from the U.S. Energy Information Administration (EIA), CAISO's Open Access Same-time Information System (OASIS), and the California Integrated Energy Policy Report (IEPR). The resulting demand forecasts feed directly into a second research project that uses optimization to compare the economic case for new transmission infrastructure versus distributed battery storage.</p>
+                    <p>Capacity expansion models of California increasingly run on detailed nodal networks, but the load they are given is rarely resolved below the balancing-authority or regional level. I built an open-source pipeline that takes statewide and regional load projections (EIA-930, the CEC's Integrated Energy Policy Report through 2050, the CPUC's RESOLVE model, and ReEDS) and places them at real utility substations and on the buses of the California Test System (CATS; Taylor et al., <em>IEEE Transactions on Energy Markets, Policy and Regulation</em>, 2024). I am the sole developer, and the code and documentation are public: <a href="https://github.com/Energy-MAC/california-hourly-disaggregation" target="_blank">github.com/Energy-MAC/california-hourly-disaggregation</a>.</p>
 
                     <h2>Motivation</h2>
-                    <p>Planning a power grid is a long-horizon problem: transmission lines take years to permit and build, and decisions made today lock in infrastructure for decades. The quality of those decisions depends almost entirely on how well we can predict where and when demand will grow. California is a particularly challenging and high-stakes case &mdash; load patterns are shaped by a rapidly expanding electric vehicle fleet, growing air conditioning use due to rising temperatures, and the large-scale installation of rooftop solar, which suppresses net grid demand during the day while creating steeper evening ramps.</p>
-                    <p>Existing public forecasts from CAISO and the California Energy Commission give statewide or regional totals, but planning decisions require finer resolution: which specific transmission corridors will be congested, and at what hours? This project disaggregates those totals to produce node-level, hour-by-hour demand profiles that can serve as inputs to transmission and storage planning models. This work extends the California Test System (CATS), a geographically accurate test system based on the California grid (Taylor et al., <em>IEEE Transactions on Energy Markets, Policy and Regulation</em>, 2024).</p>
+                    <p>Planning a power grid is a long-horizon problem: transmission lines take years to permit and build, and decisions made today lock in infrastructure for decades. California is a particularly high-stakes case &mdash; load patterns are being reshaped by electric vehicles, growing air conditioning use, and rooftop solar, which suppresses net demand during the day and steepens evening ramps.</p>
+                    <p>Public projections give statewide or regional totals, but a nodal planning model needs to know which bus carries that load, hour by hour. This project is not a forecast: it takes a projection someone else has made and answers where on the network that load sits.</p>
 
-                    <h2>Data and Machine Learning Approach</h2>
-                    <p>The model is trained on a combination of publicly available datasets:</p>
+                    <h2>Data</h2>
+                    <p>I assembled a dataset of 1,347 PG&amp;E, SCE, and SDG&amp;E substations with coordinates, voltages, distributed-resource attributes, and month-by-hour load ranges, scraping and reconciling about ten public sources: utility distribution-planning data, the CEC's statewide substation inventory, EIA-930 and EIA-861, IEPR, RESOLVE, and ReEDS. Cross-referencing showed that all 3,171 CATS substation buses match a record in the CEC's 2026 inventory within 2 km, so that inventory can serve as CATS's coordinate source. I revised and documented the rules for matching substations across sources.</p>
+
+                    <h2>Methods</h2>
+                    <p>Every method conserves the statewide total exactly in every hour, so differences between them come only from where load is placed.</p>
                     <ul>
-                        <li><strong>EIA:</strong> historical electricity consumption by sector (residential, commercial, industrial) and state</li>
-                        <li><strong>CAISO OASIS:</strong> historical hourly load by transmission zone and locational marginal prices</li>
-                        <li><strong>IEPR:</strong> California Energy Commission long-run demand forecasts and electrification scenarios</li>
+                        <li><strong>Proportional weights:</strong> each substation receives its share of its region's load in each month and hour, through either a county-level chain (ReEDS) or a utility-level chain (IEPR, RESOLVE).</li>
+                        <li><strong>Stochastic model:</strong> Monte Carlo draws that reproduce each substation's measured load range while moving with the statewide total through a common factor. Validated on EIA-930 data from 2015&ndash;2025: median error in recovering substation load ranges of 1.1%, and hourly tracking error of 0.40%.</li>
+                        <li><strong>Coordinate-free allocation:</strong> for node systems that come without coordinates, allocating in proportion to the levels supplied for each node.</li>
+                        <li><strong>Mapping to buses:</strong> nearest-bus assignment, identity matching through CEC records (80.6% of substations matched to the bus built from their own record), and catchments solved as a transportation linear program.</li>
                     </ul>
-                    <p>The machine learning component learns the relationship between observable features &mdash; weather, time-of-day, season, day-of-week, electrification penetration &mdash; and the spatial and temporal distribution of demand across the grid. The goal is a model that can generate plausible hourly demand profiles at the node level for multiple future scenarios (baseline, high electrification, high solar penetration).</p>
+                    <p>A scikit-learn side study tried to predict substation load from structural features. It recovered a substation's load shape but not its magnitude, which is why predicted profiles were never used in the pipeline.</p>
 
-                    <h2>Downstream Application: Transmission vs. Storage</h2>
-                    <p>The demand forecasts produced by the ML model are the primary input to a capacity expansion model implemented in Julia with the Gurobi solver. This second model asks a central policy question: given expected demand growth and a budget for new infrastructure, is it cheaper to build new transmission lines or to install distributed battery storage?</p>
-                    <p>Transmission and storage address grid constraints differently. A new line permanently increases how much power can move between two points, but is expensive, slow to build, and fixed in location. Batteries are faster to deploy and more flexible, but their value depends heavily on where they are placed and how often congestion occurs. The optimization model compares the costs and benefits of each approach across many scenarios of demand growth, renewable generation, and infrastructure cost, producing recommendations for where each type of investment is most justified. A central question is how load resolution and nodal variability change both investment and operating decisions.</p>
-
-                    <h2>Status</h2>
-                    <p>The research phase ran from May to August 2026. Alongside the downscaling and investment work, I extended CATS with updated documentation and rules, and colleagues are now applying the downscaled projections in their own capacity expansion research. A first-author working paper is in preparation on one part of this work: how the method used to place statewide load onto CATS's buses changes dispatch, prices, and whether the network can deliver the load. Results and visualizations will be added here as the work advances.</p>
+                    <h2>Use and Status</h2>
+                    <p>Colleagues are using packaged outputs from the pipeline &mdash; hourly loads at CATS buses for RESOLVE's 2035 forecast, and a grid of 160 model-year and weather-year scenarios &mdash; in a capacity expansion study comparing transmission and storage investment. I am also lead author of a working paper on one part of this work: how the method used to place statewide load on CATS's buses changes dispatch, prices, and whether the network can deliver the load. Results will be added here as the paper advances.</p>
                 </div>
 
                 <div class="project-detail-skills">
                     <ul>
                         <li>Python</li>
-                        <li>Machine Learning</li>
-                        <li>Time-Series Forecasting</li>
                         <li>Julia</li>
+                        <li>GenX</li>
                         <li>Gurobi</li>
-                        <li>Capacity Expansion</li>
+                        <li>Statistical Modeling</li>
+                        <li>Linear Programming</li>
+                        <li>Geospatial Analysis</li>
                         <li>Power Systems</li>
-                        <li>CAISO / EIA Data</li>
                     </ul>
                 </div>
 
@@ -108,7 +108,7 @@
                         </div>
                         <div class="col-sm-5 social">
                             <ul>
-                                <li><a href="https://github.com/cloitman/my_tools" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                <li><a href="https://github.com/cloitman" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
                                 <li><a href="https://www.linkedin.com/in/charlie-loitman/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                 <li><a href="mailto:cloitman@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                             </ul>
